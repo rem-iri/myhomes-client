@@ -1,0 +1,11 @@
+.app-main {
+    margin: 50px;
+    border-radius: 10px;
+    border: 1px solid #000;
+    background-color: antiquewhite;
+    color: #3b2c2c;
+}
+
+.app-main h2 {
+    padding: 15px;
+}
