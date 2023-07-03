@@ -1,12 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { GuestPortalComponent } from './guest-portal.component';
+import { LoginComponent } from './auth/login/login.component';
 
 const routes: Routes = [
+  // {
+  //   path: '',
+  //   component: GuestPortalComponent
+  // },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
   {
     path: '',
-    component: GuestPortalComponent
-  }
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+  },
 ];
 
 @NgModule({
