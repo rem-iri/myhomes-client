@@ -16,6 +16,11 @@ const routes: Routes = [
     path: 'seller',
     loadChildren: () => import('./seller-portal/seller-portal.module').then(m => m.SellerPortalModule)
     // AUTHGUARD HERE
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./seller-portal/seller-portal.module').then(m => m.SellerPortalModule)
+    // AUTHGUARD HERE
   }
 ];
 

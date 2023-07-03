@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'll-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'll-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class HomeComponent implements OnInit {
   particlesOptions = {
     particles: {
       color: {
@@ -24,9 +24,7 @@ export class LoginComponent implements OnInit {
       }
     }
   };
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

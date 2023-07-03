@@ -5,7 +5,8 @@ import { SellerPortalRoutingModule } from './seller-portal-routing.module';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     CommonModule,
     SellerPortalRoutingModule
