@@ -1,0 +1,28 @@
+.mat-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #FFF7E9;
+  padding: 10px;
+  width: 100%;
+}
+
+.mat-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mat-left {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.mat-company-name {
+  font-weight: bold;
+}
+
+.mat-rights {
+  margin-left: 10px;
+}

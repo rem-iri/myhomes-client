@@ -1,0 +1,43 @@
+<mat-sidenav-container class="sidebar-container">
+  <mat-sidenav mode="side" opened class="sidebar">
+    <mat-nav-list>
+      <div class="logo-container">
+        <div class="logo">
+          <img src="assets/images/logo.png" class="logo-icon">
+        </div>
+      </div>
+      <div class="profile-container">
+        <div class="sidebar-icon">
+          <img src="assets/images/user-128x128.jpg" alt="Profile Picture">
+        </div>
+        <span class="sidebar-text">My Name</span>
+      </div>
+      <div class="upgrade-button">
+        <mat-icon class="star-icon">star</mat-icon>
+        <span class="upgrade-text">Upgrade</span>
+      </div>
+      <a mat-list-item routerLink="/dashboard" routerLinkActive="active">
+        <mat-icon>dashboard</mat-icon>
+        <span class="sidebar-text">Dashboard</span>
+      </a>
+      <a mat-list-item routerLink="/properties" routerLinkActive="active">
+        <mat-icon>home</mat-icon>
+        <span class="sidebar-text">Properties</span>
+      </a>
+      <a mat-list-item routerLink="/seller-portal/edit-profile" routerLinkActive="active">
+        <mat-icon>person</mat-icon>
+        <span class="sidebar-text">Profile</span>
+      </a>
+      <a mat-list-item routerLink="/plan-and-billing" routerLinkActive="active">
+        <mat-icon>credit_card</mat-icon>
+        <span class="sidebar-text">Plan & Billing</span>
+      </a>
+    </mat-nav-list>
+    <a mat-list-item routerLink="/logout" routerLinkActive="active">
+      <mat-icon>exit_to_app</mat-icon>
+      <span class="sidebar-text">Logout</span>
+    </a>
+  </mat-sidenav>
+  <mat-sidenav-content></mat-sidenav-content>
+</mat-sidenav-container>
+

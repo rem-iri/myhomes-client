@@ -1,0 +1,46 @@
+<div class="card">
+  <form class="profile-form">
+    <div class="form-field-row">
+      <mat-form-field class="form-field">
+        <mat-label>First Name</mat-label>
+        <input matInput placeholder="First Name" [(ngModel)]="firstName" name="firstName" required>
+      </mat-form-field>
+
+      <mat-form-field class="form-field">
+        <mat-label>Last Name</mat-label>
+        <input matInput placeholder="Last Name" [(ngModel)]="lastName" name="lastName" required>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field class="form-field">
+      <mat-label>Company Name</mat-label>
+      <input matInput placeholder="Company Name" [(ngModel)]="companyName" name="companyName" required>
+    </mat-form-field>
+    
+    <mat-form-field class="form-field">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="Email" [(ngModel)]="email" name="email" required>
+    </mat-form-field>
+
+    <mat-form-field class="form-field">
+      <mat-label>About</mat-label>
+      <textarea matInput placeholder="About" [(ngModel)]="about" name="about" required maxlength="200"></textarea>
+    </mat-form-field>
+
+    <div class="profile-image">
+      <div class="profile-image-icon">
+        <img [src]="profileImage" alt="Profile Image">
+      </div>
+      <div class="profile-image-upload">
+        <input type="file" accept="image/*" (change)="onFileSelected($event)" style="display: none;" #fileInput>
+        <button mat-button color="primary" (click)="fileInput.click()">
+          <mat-icon>image</mat-icon> Upload Profile Picture
+        </button>
+      </div>
+    </div>
+
+    <div class="button-container">
+      <button mat-raised-button color="primary" class="save-button" (click)="saveProfile()">Update Profile</button>
+    </div>
+  </form>
+</div>

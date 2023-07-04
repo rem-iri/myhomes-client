@@ -1,0 +1,15 @@
+.page-container {
+    display: flex;
+  }
+  
+  .app-sidebar {
+    width: 200px; 
+  }
+  
+  .content-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
