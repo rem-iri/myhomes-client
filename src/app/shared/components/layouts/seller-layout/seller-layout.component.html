@@ -4,10 +4,13 @@
           <ll-sidenav></ll-sidenav>
       </mat-sidenav>
       <mat-sidenav-content>
-        <ll-header-guest (toggleSidenav)="toggleSidenav()" [topFixed]="true"></ll-header-guest>
-        <main><router-outlet></router-outlet></main>
-        <ll-feature></ll-feature>
+        <ll-header-seller (toggleSidenav)="toggleSidenav()" [topFixed]="true"></ll-header-seller>
+        <main class="main-pane">
+            <router-outlet></router-outlet>
+            <ll-feature></ll-feature>
         <ll-footer></ll-footer>
+        </main>
+        
       </mat-sidenav-content>
     </mat-sidenav-container>
   </div>

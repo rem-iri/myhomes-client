@@ -1,13 +1,14 @@
 // import { Component } from '@angular/core';
 
 // @Component({
-//   selector: 'app-guest-portal',
-//   templateUrl: './guest-portal.component.html',
-//   styleUrls: ['./guest-portal.component.scss']
+//   selector: 'app-seller-layout',
+//   templateUrl: './seller-layout.component.html',
+//   styleUrls: ['./seller-layout.component.scss']
 // })
-// export class GuestPortalComponent {
+// export class SellerLayoutComponent {
 
 // }
+
 
 
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
@@ -15,11 +16,11 @@ import {BreakpointObserver} from '@angular/cdk/layout';
 import { takeWhile } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-guest-portal',
-  templateUrl: './guest-portal.component.html',
-  styleUrls: ['./guest-portal.component.scss']
+  selector: 'll-base-layout-seller',
+  templateUrl: './seller-layout.component.html',
+  styleUrls: ['./seller-layout.component.scss']
 })
-export class GuestPortalComponent implements OnInit, OnDestroy {
+export class SellerLayoutComponent implements OnInit, OnDestroy {
   isAlive: boolean = true;
   @ViewChild('sidenav') sidenav: { toggle: () => void; opened: boolean; };
   isSidenavExpand = false;

@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 
 import { SellerPortalRoutingModule } from './seller-portal-routing.module';
 import { SharedModule } from '../shared/shared.module';
-import { SellerPortalComponent } from './seller-portal.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { PropertiesComponent } from './properties/properties.component';
 
 
 @NgModule({
-  declarations: [SellerPortalComponent],
+  declarations: [ DashboardComponent, PropertiesComponent],
   imports: [
     CommonModule,
     SharedModule,

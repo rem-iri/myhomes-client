@@ -16,6 +16,9 @@ import { MatListModule } from '@angular/material/list';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GuestLayoutComponent } from './components/layouts/guest-layout/guest-layout.component';
+import { HeaderGuestComponent } from './components/header-guest/header-guest.component';
+import { SellerLayoutComponent } from './components/layouts/seller-layout/seller-layout.component';
+import { HeaderSellerComponent } from './components/header-seller/header-seller.component';
 
 const commonModules = [
   HttpClientModule,
@@ -29,8 +32,8 @@ const commonModules = [
 ];
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, FeatureComponent, BaseLayoutComponent, LoaderComponent, SidenavComponent, GuestLayoutComponent],
+  declarations: [HeaderComponent, FooterComponent, FeatureComponent, BaseLayoutComponent, LoaderComponent, SidenavComponent, GuestLayoutComponent, HeaderGuestComponent, SellerLayoutComponent, HeaderSellerComponent],
   imports: [CommonModule, RouterModule, ...commonModules],
-  exports: [HeaderComponent, FooterComponent, BaseLayoutComponent, FeatureComponent, LoaderComponent, SidenavComponent, ...commonModules]
+  exports: [HeaderComponent, FooterComponent, BaseLayoutComponent, FeatureComponent, LoaderComponent, SidenavComponent, GuestLayoutComponent, HeaderGuestComponent, SellerLayoutComponent, HeaderSellerComponent, ...commonModules]
 })
 export class SharedModule {}

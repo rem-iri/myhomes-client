@@ -1,14 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BaseLayoutComponent } from './shared/components/layouts/base-layout/base-layout.component';
-import { GuestPortalComponent } from './guest-portal/guest-portal.component';
-import { SellerPortalComponent } from './seller-portal/seller-portal.component';
-import { BuyerPortalComponent } from './buyer-portal/buyer-portal.component';
+import { GuestLayoutComponent } from './shared/components/layouts/guest-layout/guest-layout.component';
+import { SellerLayoutComponent } from './shared/components/layouts/seller-layout/seller-layout.component';
+import { AuthGuard } from './shared/auth-guard.service';
 
 const routes: Routes = [
+  // {
+  //   path: "auth",
+  //   loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+  // },
+
   {
     path: "",
-    component: GuestPortalComponent,
+    component: GuestLayoutComponent,
     children: [
       {
         path: '',
@@ -20,28 +25,16 @@ const routes: Routes = [
 
   {
     path: "",
-    component: SellerPortalComponent,
+    component: SellerLayoutComponent,
     children: [
       {
         path: 'seller',
         loadChildren: () => import('./seller-portal/seller-portal.module').then(m => m.SellerPortalModule)
         // AUTHGUARD HERE
       }
-    ]
+    ],
+    // canActivate: [AuthGuard],
   },
-
-
-  {
-    path: "",
-    component: BuyerPortalComponent,
-    children: [
-      {
-        path: 'buyer',
-        loadChildren: () => import('./buyer-portal/buyer-portal.module').then(m => m.BuyerPortalModule)
-        // AUTHGUARD HERE
-      },
-    ]
-  }
   
 ];
 
