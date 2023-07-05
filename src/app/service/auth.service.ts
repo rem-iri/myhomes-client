@@ -11,6 +11,8 @@ import {
 import { AuthStateService } from '../shared/auth-state.service';
 import { User } from '../model/user';
 import { AppModule } from "../app.module";
+import { HttpClientService } from "../shared/http-client.service";
+import { JwtService } from "./jwt.service";
 
 @Injectable({providedIn: "root"})
 export class AuthService {
@@ -18,20 +20,30 @@ export class AuthService {
   constructor(
     private stateService: AuthStateService,
     private router: Router,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private httpClientService: HttpClientService,
+    private jwtService: JwtService
   ) {}
 
   isAuthenticated() {
-    return this.stateService.hasCurrentUser();
+    return this.stateService.hasCurrentUser() && !this.jwtService.isExpired(this.stateService.getCurrentUser().token);
   }
 
-  login(username: string, password: string) {
+  async login(email: string, password: string) {
     this.stateService.removeCurrentUser();
 
     let user: User = new User();
-    user.username = username;
+    user.email = email;
     user.firstName = 'John';
     user.lastName = 'Doe';
+
+    let getTokenResponse = await this.httpClientService.getToken();
+
+    console.log(getTokenResponse);
+    
+
+    user.token = getTokenResponse.accessToken ?? "";
+  
 
     this.stateService.setCurrentUser(user);
   }

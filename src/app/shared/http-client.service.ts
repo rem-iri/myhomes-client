@@ -26,4 +26,29 @@ export class HttpClientService {
 
     return promise;
   }
+  
+  getToken(): Promise<any> {
+    let promise = new Promise((resolve, reject) => {
+      this.http
+        .post<any[]>(`http://localhost:5556/access-token`, null, {
+          headers: {
+            "x-client-id": "user10",
+            "x-secret-key": "secret10"
+          }
+        })
+        .toPromise()
+        .then(
+          (res) => {
+            console.log("getToken success: ", res);
+            resolve(res);
+          },
+          (msg) => {
+            console.log("Caught in getToken error: ", msg);
+            reject(msg);
+          }
+        );
+    });
+
+    return promise;
+  }
 }

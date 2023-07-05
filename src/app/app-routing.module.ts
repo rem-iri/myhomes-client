@@ -29,11 +29,13 @@ const routes: Routes = [
     children: [
       {
         path: 'seller',
-        loadChildren: () => import('./seller-portal/seller-portal.module').then(m => m.SellerPortalModule)
+        loadChildren: () => import('./seller-portal/seller-portal.module').then(m => m.SellerPortalModule),
         // AUTHGUARD HERE
+        
       }
     ],
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard]
   },
   
 ];
