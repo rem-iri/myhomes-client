@@ -5,10 +5,11 @@ import { SellerPortalRoutingModule } from './seller-portal-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PropertiesComponent } from './properties/properties.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
-  declarations: [ DashboardComponent, PropertiesComponent],
+  declarations: [ DashboardComponent, PropertiesComponent, ProfileComponent],
   imports: [
     CommonModule,
     SharedModule,

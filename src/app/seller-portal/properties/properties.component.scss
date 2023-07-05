@@ -1,0 +1,29 @@
+.profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  
+    // .edit-button {
+    //   margin-left: 16px;
+    //   margin-top: -2px;
+    // }
+  }
+  
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  
+    .example-full-width {
+      width: 100%;
+      display: block;
+      margin-bottom: 16px;
+    }
+  
+    td {
+      padding-right: 8px;
+    }
+  }
+  
