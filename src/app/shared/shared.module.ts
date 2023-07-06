@@ -22,7 +22,7 @@ import { HeaderSellerComponent } from './components/header-seller/header-seller.
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-
+import { MatTooltipModule } from '@angular/material/tooltip';
 const commonModules = [
   HttpClientModule,
   MatToolbarModule,
@@ -35,6 +35,9 @@ const commonModules = [
   FormsModule, 
   MatFormFieldModule, 
   MatInputModule,
+  MatTooltipModule,
+  
+
 ];
 
 @NgModule({
