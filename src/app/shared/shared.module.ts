@@ -19,6 +19,9 @@ import { GuestLayoutComponent } from './components/layouts/guest-layout/guest-la
 import { HeaderGuestComponent } from './components/header-guest/header-guest.component';
 import { SellerLayoutComponent } from './components/layouts/seller-layout/seller-layout.component';
 import { HeaderSellerComponent } from './components/header-seller/header-seller.component';
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 const commonModules = [
   HttpClientModule,
@@ -28,7 +31,10 @@ const commonModules = [
   MatCardModule,
   MatProgressSpinnerModule,
   MatSidenavModule,
-  MatListModule
+  MatListModule,
+  FormsModule, 
+  MatFormFieldModule, 
+  MatInputModule,
 ];
 
 @NgModule({

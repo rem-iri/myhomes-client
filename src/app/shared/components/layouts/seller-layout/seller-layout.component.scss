@@ -1,3 +1,20 @@
 .main-pane {
     margin-left: 200px;
+  }.kl-sidenav-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
   }
+  
+  .mat-sidenav-content {
+    flex: 1;
+  }
+  
+  .main-pane {
+    margin-left: 200px;
+  }
+  
+  .ll-footer {
+    margin-top: auto;
+  }
+  

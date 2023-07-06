@@ -1,0 +1,64 @@
+<div class="profile-card">
+  <div class="profile-header">
+    <h2 class="profile-title">My Profile</h2>
+    <button class="edit-button" mat-icon-button matTooltip="Edit" color="accent" aria-label="Edit">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </div>
+
+  <form class="profile-form">
+    <div class="profile-picture">
+      <div class="profile-picture-preview">
+        <img id="profile-picture-preview-img" [src]="profilePictureUrl" alt="">
+      </div>
+    </div>
+    <div class="profile-picture-input-container">
+      <button mat-flat-button color="accent" (click)="openProfilePictureInput()">
+        <mat-icon>photo_camera</mat-icon>
+        Choose File
+      </button>
+      <input id="profile-picture-input" type="file" accept="image/*" class="profile-picture-file-input"
+        (change)="onProfilePictureChange($event)" hidden>
+    </div>
+    <div class="flex justify-center align-center">
+      <div class="xl:w-1/2">
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Company Name</mat-label>
+          <input matInput [(ngModel)]="companyName" name="companyName">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input matInput [(ngModel)]="email" name="email">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>First Name</mat-label>
+          <input matInput [(ngModel)]="firstName" name="firstName">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Last Name</mat-label>
+          <input matInput [(ngModel)]="lastName" name="lastName">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>About</mat-label>
+          <textarea matInput [(ngModel)]="about" name="about" placeholder="Short description of yourself"
+            maxlength="300"></textarea>
+          <div class="character-count">
+            <span id="character-count">300</span> characters remaining
+          </div>
+        </mat-form-field>
+
+        <div class="update-button">
+          <button mat-fab extended color="accent">
+            <mat-icon>edit</mat-icon>
+            Update Profile
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
