@@ -4,24 +4,18 @@ export interface Menu {
 }
 
 export const menuList: Menu[] = [
+ 
   {
-    path: '/products',
-    name: 'Products'
+    path: '/home',
+    name: 'Home'
   },
-  {
-    path: '/about',
-    name: 'About'
+   {
+    path: '/marketplace',
+    name: 'MarketPlace'
   },
+ 
   {
-    path: '/contact',
-    name: 'Contact'
-  },
-  {
-    path: '/dashboard',
-    name: 'Dashboard'
-  },
-  {
-    path: '/doc',
-    name: 'Doc'
+    path: '/sellers',
+    name: 'Sellers'
   }
 ];

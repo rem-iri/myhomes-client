@@ -1,4 +1,4 @@
-export class productsDB {
+export class propertiesDB {
     static Product = [
         {
             id: 1,
@@ -6,7 +6,7 @@ export class productsDB {
                 name: 'Sajal Mia',
                 avatar: 'assets/images/avatar.png'
             },
-            images: ['assets/images/products/02-1.png', 'assets/images/products/02-2.png', 'assets/images/products/02-3.png'],
+            images: ['assets/images/properties/02-1.png', 'assets/images/properties/02-2.png', 'assets/images/properties/02-3.png'],
             name: 'Industry marketing by subscription',
             price: 3000.00,
             rating: 4.8,
@@ -24,7 +24,7 @@ export class productsDB {
                 name: 'Sajal Mia',
                 avatar: 'assets/images/avatar.png'
             },
-            images: ['assets/images/products/01-1.png', 'assets/images/products/01-2.png', 'assets/images/products/01-3.png'],
+            images: ['assets/images/properties/01-1.png', 'assets/images/properties/01-2.png', 'assets/images/properties/01-3.png'],
             name: 'Potential analysis - digitization for manufacturing companies',
             price: 3000.00,
             rating: 4.8,
@@ -42,7 +42,7 @@ export class productsDB {
                 name: 'Sajal Mia',
                 avatar: 'assets/images/avatar.png'
             },
-            images: ['assets/images/products/01-1.png', 'assets/images/products/01-2.png', 'assets/images/products/01-3.png'],
+            images: ['assets/images/properties/01-1.png', 'assets/images/properties/01-2.png', 'assets/images/properties/01-3.png'],
             name: 'Task Management Scheduler',
             price: 3000.00,
             rating: 4.8,
@@ -60,7 +60,7 @@ export class productsDB {
                 name: 'Sajal Mia',
                 avatar: 'assets/images/avatar.png'
             },
-            images: ['assets/images/products/02-1.png', 'assets/images/products/02-2.png', 'assets/images/products/02-3.png'],
+            images: ['assets/images/properties/02-1.png', 'assets/images/properties/02-2.png', 'assets/images/properties/02-3.png'],
             name: 'Industry marketing by subscription',
             price: 3000.00,
             rating: 4.8,
@@ -78,7 +78,7 @@ export class productsDB {
                 name: 'Sajal Mia',
                 avatar: 'assets/images/avatar.png'
             },
-            images: ['assets/images/products/01-1.png', 'assets/images/products/01-2.png', 'assets/images/products/01-3.png'],
+            images: ['assets/images/properties/01-1.png', 'assets/images/properties/01-2.png', 'assets/images/properties/01-3.png'],
             name: 'Potential analysis - digitization for manufacturing companies',
             price: 3000.00,
             rating: 4.8,
@@ -96,7 +96,7 @@ export class productsDB {
                 name: 'Sajal Mia',
                 avatar: 'assets/images/avatar.png'
             },
-            images: ['assets/images/products/02-1.png', 'assets/images/products/02-2.png', 'assets/images/products/02-3.png'],
+            images: ['assets/images/properties/02-1.png', 'assets/images/properties/02-2.png', 'assets/images/properties/02-3.png'],
             name: 'Industry marketing by subscription',
             price: 3000.00,
             rating: 4.8,
@@ -114,7 +114,7 @@ export class productsDB {
                 name: 'Sajal Mia',
                 avatar: 'assets/images/avatar.png'
             },
-            images: ['assets/images/products/01-1.png', 'assets/images/products/01-2.png', 'assets/images/products/01-3.png'],
+            images: ['assets/images/properties/01-1.png', 'assets/images/properties/01-2.png', 'assets/images/properties/01-3.png'],
             name: 'Potential analysis - digitization for manufacturing companies',
             price: 3000.00,
             rating: 4.8,
@@ -132,7 +132,7 @@ export class productsDB {
                 name: 'Sajal Mia',
                 avatar: 'assets/images/avatar.png'
             },
-            images: ['assets/images/products/02-1.png', 'assets/images/products/02-2.png', 'assets/images/products/02-3.png'],
+            images: ['assets/images/properties/02-1.png', 'assets/images/properties/02-2.png', 'assets/images/properties/02-3.png'],
             name: 'Industry marketing by subscription',
             price: 3000.00,
             rating: 4.8,
@@ -150,7 +150,7 @@ export class productsDB {
                 name: 'Sajal Mia',
                 avatar: 'assets/images/avatar.png'
             },
-            images: ['assets/images/products/01-1.png', 'assets/images/products/01-2.png', 'assets/images/products/01-3.png'],
+            images: ['assets/images/properties/01-1.png', 'assets/images/properties/01-2.png', 'assets/images/properties/01-3.png'],
             name: 'Potential analysis - digitization for manufacturing companies',
             price: 3000.00,
             rating: 4.8,

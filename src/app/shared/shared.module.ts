@@ -23,6 +23,8 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatDialogModule} from '@angular/material/dialog';
+import { BuyerLayoutComponent } from './components/layouts/buyer-layout/buyer-layout.component';
+import { BuyerHeaderComponent } from './components/buyer-header/buyer-header.component';
 
 const commonModules = [
   HttpClientModule,
@@ -40,8 +42,8 @@ const commonModules = [
 ];
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, FeatureComponent, BaseLayoutComponent, LoaderComponent, SidenavComponent, GuestLayoutComponent, HeaderGuestComponent, SellerLayoutComponent, HeaderSellerComponent],
+  declarations: [HeaderComponent, FooterComponent, FeatureComponent, BaseLayoutComponent, LoaderComponent, SidenavComponent, GuestLayoutComponent, HeaderGuestComponent, SellerLayoutComponent, HeaderSellerComponent, BuyerLayoutComponent, BuyerHeaderComponent],
   imports: [CommonModule, RouterModule, ...commonModules],
-  exports: [HeaderComponent, FooterComponent, BaseLayoutComponent, FeatureComponent, LoaderComponent, SidenavComponent, GuestLayoutComponent, HeaderGuestComponent, SellerLayoutComponent, HeaderSellerComponent, ...commonModules]
+  exports: [HeaderComponent, FooterComponent, BaseLayoutComponent, FeatureComponent, LoaderComponent, SidenavComponent, GuestLayoutComponent, HeaderGuestComponent, SellerLayoutComponent, HeaderSellerComponent,BuyerHeaderComponent,BuyerLayoutComponent, ...commonModules]
 })
 export class SharedModule {}

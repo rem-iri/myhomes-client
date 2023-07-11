@@ -4,6 +4,7 @@ import { BaseLayoutComponent } from './shared/components/layouts/base-layout/bas
 import { GuestLayoutComponent } from './shared/components/layouts/guest-layout/guest-layout.component';
 import { SellerLayoutComponent } from './shared/components/layouts/seller-layout/seller-layout.component';
 import { AuthGuard } from './shared/auth-guard.service';
+import { BuyerLayoutComponent } from './shared/components/layouts/buyer-layout/buyer-layout.component';
 
 const routes: Routes = [
   // {
@@ -21,7 +22,16 @@ const routes: Routes = [
       },
     ]
   },
-
+  {
+    path: "",
+    component: BuyerLayoutComponent,
+    children: [
+      {
+        path: 'buyer',
+        loadChildren: () => import('./buyer-portal/buyer-portal.module').then(m => m.BuyerPortalModule)
+      },
+    ]
+  },
 
   {
     path: "",
