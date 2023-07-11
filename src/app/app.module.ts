@@ -13,7 +13,7 @@ import { AuthStateService } from './shared/auth-state.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

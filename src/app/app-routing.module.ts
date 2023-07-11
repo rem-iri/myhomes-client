@@ -13,7 +13,7 @@ const routes: Routes = [
 
   {
     path: "",
-    component: GuestLayoutComponent,
+    // component: GuestLayoutComponent,
     children: [
       {
         path: '',
@@ -36,7 +36,7 @@ const routes: Routes = [
     ],
     canActivate: [AuthGuard],
     canActivateChild: [AuthGuard]
-  },
+  }
   
 ];
 
