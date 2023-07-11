@@ -29,8 +29,11 @@ module.exports = {
       gray: colors.coolGray,
       red: colors.red,
       blue: colors.blue,
-      yellow: colors.amber
-    }
+      yellow: colors.amber,
+      orange: '#F29F05',
+    },
+    textShadow: {
+      default: '0 10px 10px rgba(0, 0, 0, 0.5)',}
   },
   variants: {
     extend: { }

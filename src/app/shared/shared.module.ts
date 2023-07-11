@@ -25,6 +25,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatDialogModule} from '@angular/material/dialog';
+import { BuyerLayoutComponent } from './components/layouts/buyer-layout/buyer-layout.component';
+import { BuyerHeaderComponent } from './components/buyer-header/buyer-header.component';
+
 const commonModules = [
   HttpClientModule,
   MatToolbarModule,
@@ -39,16 +43,15 @@ const commonModules = [
   MatInputModule,
   MatTooltipModule,
   MatListModule,
- MatCardModule,
- MatRadioModule,
- MatSlideToggleModule,
-  
-
+  MatCardModule,
+  MatRadioModule,
+  MatSlideToggleModule,
+  MatDialogModule
 ];
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, FeatureComponent, BaseLayoutComponent, LoaderComponent, SidenavComponent, GuestLayoutComponent, HeaderGuestComponent, SellerLayoutComponent, HeaderSellerComponent],
+  declarations: [HeaderComponent, FooterComponent, FeatureComponent, BaseLayoutComponent, LoaderComponent, SidenavComponent, GuestLayoutComponent, HeaderGuestComponent, SellerLayoutComponent, HeaderSellerComponent, BuyerLayoutComponent, BuyerHeaderComponent],
   imports: [CommonModule, RouterModule, ...commonModules],
-  exports: [HeaderComponent, FooterComponent, BaseLayoutComponent, FeatureComponent, LoaderComponent, SidenavComponent, GuestLayoutComponent, HeaderGuestComponent, SellerLayoutComponent, HeaderSellerComponent, ...commonModules]
+  exports: [HeaderComponent, FooterComponent, BaseLayoutComponent, FeatureComponent, LoaderComponent, SidenavComponent, GuestLayoutComponent, HeaderGuestComponent, SellerLayoutComponent, HeaderSellerComponent,BuyerHeaderComponent,BuyerLayoutComponent, ...commonModules]
 })
 export class SharedModule {}
