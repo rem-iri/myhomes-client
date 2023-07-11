@@ -1,0 +1,127 @@
+
+
+  .image-container {
+    
+    width: 1000px;
+    height :600px;
+    border-radius: 20px;
+    background-color: white;
+}
+
+.content-container
+{
+  display: flex;
+  height: 1200px;
+}
+    .title-container{
+        background-color: white;
+        width:1000px;
+        height: 80px;
+        border-radius: 20px;
+    }
+    .image-wrapper {
+        display: flex;
+        justify-content: center;
+        
+        height: 400px;
+        border: 1px solid transparent;
+      }
+      
+      .titleproperty{
+        margin-right: 10px;
+        margin-top:5px;
+        padding-top: 20px;
+      }
+      
+
+  .current-image {
+    width: 700px;
+    height: 400px;
+
+
+  }
+  
+  .other-images-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .other-image {
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+.title{
+  background-color: #2359b1;
+  height: 70px;
+}
+  .other-image-thumbnail {
+    width:100px;
+    height: 100px;
+    max-height: 100px;
+    margin-top: 50px;
+   
+  }
+  .seller-image {
+    width: 80px;
+    height: 80px;
+    border:black;
+    border-radius: 50%;
+    background-color: beige;
+  }
+  
+  .description{
+    background-color: rgb(245, 243, 243);
+    margin:5px;
+    margin-top: 10px;
+    border-radius: 3px;
+  }
+  
+  .properties-details {
+    margin-top: 35px;
+    background-color: white;
+    margin-left: 15px;
+    border-radius: 10px;
+    height: 350px;
+  }
+  .properties-details2 {
+   
+    background-color: white;
+    margin-left: 15px;
+    border-radius: 10px;
+    height: 350px;
+    margin-top: 400px;
+   
+  }
+  .imageseller{
+    padding-top: 30px;
+    border:#2359b1
+  }
+  .buttonround{
+    height: 100px;
+    width: 100px;
+  }
+
+  .properties-title {
+    font-size: 24px;
+    font-weight: bold;
+    padding-top: 10px;
+  }
+  
+  .properties-description {
+    margin-top: 10px;
+
+  }
+  
+  .properties-price {
+    margin-top: 10px;
+    font-size: medium;
+    font-weight: bold;
+  }
+  
+  .properties-location {
+    margin-top: 10px;
+  }
+  

@@ -19,6 +19,8 @@ import { GuestLayoutComponent } from './components/layouts/guest-layout/guest-la
 import { HeaderGuestComponent } from './components/header-guest/header-guest.component';
 import { SellerLayoutComponent } from './components/layouts/seller-layout/seller-layout.component';
 import { HeaderSellerComponent } from './components/header-seller/header-seller.component';
+import { BuyerLayoutComponent } from './components/layouts/buyer-layout/buyer-layout.component';
+import { BuyerHeaderComponent } from './components/buyer-header/buyer-header.component';
 
 const commonModules = [
   HttpClientModule,
@@ -32,8 +34,8 @@ const commonModules = [
 ];
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, FeatureComponent, BaseLayoutComponent, LoaderComponent, SidenavComponent, GuestLayoutComponent, HeaderGuestComponent, SellerLayoutComponent, HeaderSellerComponent],
+  declarations: [HeaderComponent, FooterComponent, FeatureComponent, BaseLayoutComponent, LoaderComponent, SidenavComponent, GuestLayoutComponent, HeaderGuestComponent, SellerLayoutComponent, HeaderSellerComponent, BuyerLayoutComponent, BuyerHeaderComponent],
   imports: [CommonModule, RouterModule, ...commonModules],
-  exports: [HeaderComponent, FooterComponent, BaseLayoutComponent, FeatureComponent, LoaderComponent, SidenavComponent, GuestLayoutComponent, HeaderGuestComponent, SellerLayoutComponent, HeaderSellerComponent, ...commonModules]
+  exports: [HeaderComponent, FooterComponent, BaseLayoutComponent, FeatureComponent, LoaderComponent, SidenavComponent, GuestLayoutComponent, HeaderGuestComponent, SellerLayoutComponent, HeaderSellerComponent,BuyerHeaderComponent,BuyerLayoutComponent, ...commonModules]
 })
 export class SharedModule {}

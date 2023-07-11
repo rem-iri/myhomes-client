@@ -24,8 +24,11 @@
     "@ngneat/tailwind": "^7.0.3",
     "ng-particles": "^3.10.1",
     "ngx-skeleton-loader": "^8.0.0",
+    "ngx-swiper-wrapper": "^10.0.0",
     "ngx-webstorage-service": "^5.0.0",
+    "particles.js": "^2.0.0",
     "rxjs": "~7.8.0",
+    "swiper": "^10.0.3",
     "tslib": "^2.5.3",
     "tsparticles": "^2.10.1",
     "zone.js": "^0.13.1"
