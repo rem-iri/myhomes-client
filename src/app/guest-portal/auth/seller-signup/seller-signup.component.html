@@ -6,6 +6,11 @@
       </div>
       <div class="login__content p-4 sm:p-8 flex flex-col justify-center bg-accent">
         <div class="login w-full max-w-xl rounded-md mx-auto border p-4 sm:p-8 xl:p-20">
+          <mat-card *ngIf="serverError.length" class="text-sm border-red-500 bg-red-200 mb-3">
+            <mat-card-content >
+              <p class="text-sm text-black" *ngFor="let error of serverError">{{error}}</p>
+            </mat-card-content>
+          </mat-card>
           <form [formGroup]="sellerRegisterForm" (ngSubmit)="onSubmit()" novalidate>
             <h1 class="text-2xl font-bold">Sign up</h1>
             <div class="mb-4 mt-6">
@@ -100,9 +105,9 @@
             <span class="text-gray-600 text-sm"> Already have an account? </span>
             <a routerLink="/login" class="text-gray-700 text-sm font-semibold hover:text-accent"> Login </a>
           </div>
-          <div class="mt-4">
+          <!-- <div class="mt-4">
             <a [routerLink]="['/']"  class="text-gray-700 text-sm hover:text-accent inline-flex items-center"><mat-icon class="h-4 w-4 leading-4 text-lg mr-2">keyboard_backspace</mat-icon>Go to Home</a>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

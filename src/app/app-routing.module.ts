@@ -30,7 +30,9 @@ const routes: Routes = [
         path: 'buyer',
         loadChildren: () => import('./buyer-portal/buyer-portal.module').then(m => m.BuyerPortalModule)
       },
-    ]
+    ],
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard]
   },
 
   {

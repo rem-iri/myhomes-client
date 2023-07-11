@@ -18,8 +18,7 @@
         <mat-icon>menu</mat-icon>
       </button>
       <div class="hidden items-center md:flex ml-auto">
-        <a [routerLink]="['/auth/login']" mat-raised-button color="warn" class="text-lg font-bold py-2 px-5">Login</a>
-        <a [routerLink]="['/auth/signup']" mat-raised-button color="accent" class="text-lg font-bold py-2 px-5 ml-2">Join Now</a>
+        <a (click)="logout()" mat-raised-button class="text-sm font-bold py-2 px-5 ml-2 bg-white text-black">Logout</a>
       </div>
     </div>
   </div>

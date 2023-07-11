@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 import { HttpClientService } from 'src/app/shared/http-client.service';
 import { MustMatch } from 'src/app/shared/must-match.validator';
@@ -14,7 +16,10 @@ export class SellerSignupComponent {
   submitted = false;
   constructor(
     private httpClient: HttpClientService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private _snackBar: MatSnackBar
     ) {}
 
   firstName = new FormControl("", [Validators.required]);
@@ -43,23 +48,15 @@ export class SellerSignupComponent {
   );
 
   ngOnInit() {
-    // this.registerForm = this.formBuilder.group(
-    //   {
-    //     firstName: this.firstName,
-    //     lastName: this.lastName,
-    //     email: this.email,
-    //     company: this.company,
-    //     password: this.password,
-    //     confirmPassword: this.confirmPassword,
-    //   },
-    //   {
-    //     validator: MustMatch("password", "confirmPassword"),
-    //   }
-    // );
   }
 
+  openSnackBar(message: string, action: string | undefined) {
+    this._snackBar.open(message, action, {duration: 6000});
+  }
+
+  serverError: string[] = [];
   
-  onSubmit() {
+  async onSubmit() {
     this.submitted = true;
 
     console.log(this.sellerRegisterForm)
@@ -69,12 +66,21 @@ export class SellerSignupComponent {
       return;
     }
 
-    this.httpClient.signup(this.sellerRegisterForm.value);
+    try {
+      this.serverError = [];
+      await this.httpClient.signup(this.sellerRegisterForm.value);
+    } catch(error: any) {
+      console.log("RESPONSE ERRORS ", error);
+      if(error?.error?.message) {
+        this.serverError.push(error?.error?.message);
+      }
+      return;
+    }
+    
 
-    // display form values on success
-    alert(
-      "SUCCESS!! :-)\n\n" + JSON.stringify(this.sellerRegisterForm.value, null, 4)
-    );
+    console.log(JSON.stringify(this.sellerRegisterForm.value, null, 4));
+    this.router.navigateByUrl("/login");
+    this.openSnackBar("Successfully created an account. Please Login", undefined);
   }
 }
 
