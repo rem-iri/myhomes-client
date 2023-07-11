@@ -1,0 +1,63 @@
+
+.dashboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chart-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.chart-card {
+  width: calc(50% - 10px);
+  padding: 20px;
+}
+
+.chart-title {
+  margin-top: 0;
+}
+
+.chart-wrapper {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.stats-container {
+  text-align: center;
+}
+
+.stats-title {
+  margin-top: 0;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 20px;
+}
+
+.stat-card {
+  padding: 20px;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-title {
+  margin: 0;
+}
+
+.stat-value {
+  font-weight: bold;
+  margin-top: 5px;
+}

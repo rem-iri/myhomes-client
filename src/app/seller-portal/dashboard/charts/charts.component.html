@@ -1,1 +1,36 @@
-<p>charts works!</p>
+<div class="dashboard">
+  <div class="chart-container">
+    <mat-card class="chart-card">
+      <h2 class="chart-title">Inquiries Per Cities</h2>
+      <div class="chart-wrapper">
+        <canvas #myChart></canvas>
+      </div>
+    </mat-card>
+    <mat-card class="chart-card">
+      <h2 class="chart-title">Property Sales </h2>
+      <div class="chart-wrapper">
+        <canvas #salesChart></canvas>
+      </div>
+    </mat-card>
+    <mat-card class="chart-card">
+      <h2 class="chart-title">Yearly Sale Earnings</h2>
+      <div class="chart-wrapper">
+        <canvas #earningsChart></canvas>
+      </div>
+    </mat-card>
+    <mat-card class="chart-card">
+      <h2 class="chart-title">Rental Earnings</h2>
+      <div class="chart-toggle">
+        <span class="toggle-label">Monthly</span>
+        <mat-slide-toggle (change)="toggleRentEarningsPeriod()">
+          Yearly
+        </mat-slide-toggle>
+      </div>
+      <div class="chart-wrapper">
+        <canvas #rentChart></canvas>
+      </div>
+    </mat-card>
+    
+    
+  </div>
+</div>

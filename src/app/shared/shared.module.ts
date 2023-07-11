@@ -23,6 +23,8 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 const commonModules = [
   HttpClientModule,
   MatToolbarModule,
@@ -36,6 +38,10 @@ const commonModules = [
   MatFormFieldModule, 
   MatInputModule,
   MatTooltipModule,
+  MatListModule,
+ MatCardModule,
+ MatRadioModule,
+ MatSlideToggleModule,
   
 
 ];
