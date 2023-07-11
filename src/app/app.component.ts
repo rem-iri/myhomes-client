@@ -25,7 +25,7 @@ export class AppComponent {
         if(accountType == "seller") {
           this.router.navigateByUrl("/seller");
         } else {
-          this.router.navigateByUrl("/buyer-signup");
+          this.router.navigateByUrl("/buyer");
         }
     }
   }

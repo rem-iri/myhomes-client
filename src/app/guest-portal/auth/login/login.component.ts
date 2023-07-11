@@ -82,7 +82,7 @@ export class LoginComponent implements OnInit {
         
         this.router.navigateByUrl("/seller");
       } else {
-        this.router.navigateByUrl("/buyer-signup");
+        this.router.navigateByUrl("/buyer");
       }
     } catch(error) {
       this.responseError = true;
