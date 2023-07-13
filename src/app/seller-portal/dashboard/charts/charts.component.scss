@@ -15,6 +15,7 @@
 .chart-card {
   width: calc(50% - 10px);
   padding: 20px;
+  align-items: center;
 }
 
 .chart-title {
@@ -29,6 +30,9 @@
   backdrop-filter: blur(10px);
   border-radius: 10px;
   overflow: hidden;
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
 }
 
 .stats-container {

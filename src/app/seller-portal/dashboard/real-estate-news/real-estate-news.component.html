@@ -1,14 +1,18 @@
-<div class="news-container" fxLayout="row" fxLayoutAlign="center">
-    <mat-card *ngFor="let newsItem of newsItems" class="news-card">
-      <mat-card-header>
-        <mat-card-title>{{ newsItem.title }}</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <p>{{ newsItem.description }}</p>
-      </mat-card-content>
-      <mat-card-actions>
-        <a href="{{ newsItem.link }}" target="_blank" mat-button color="primary">Read More</a>
-      </mat-card-actions>
-    </mat-card>
+<div class="news-container">
+  <div class="news-row">
+    <div class="news-card" *ngFor="let newsItem of displayedNewsItems">
+      <div class="news-image">
+        <img [src]="newsItem.urlToImage" alt="{{ newsItem.title }}" />
+      </div>
+      <div class="news-content">
+        <h3 class="news-title">{{ newsItem.title }}</h3>
+        <p class="news-description">{{ newsItem.description }}</p>
+        <a href="{{ newsItem.url }}" target="_blank" class="read-more">Read More</a>
+      </div>
+    </div>
   </div>
-  
+  <div class="news-navigation">
+    <button class="prev-button" (click)="prevPage()" [disabled]="currentPage === 0">Previous</button>
+    <button class="next-button" (click)="nextPage()" [disabled]="currentPage === maxPage">Next</button>
+  </div>
+</div>
