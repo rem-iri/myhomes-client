@@ -76,6 +76,97 @@ export class HttpClientService {
 
     return promise;
   }
+
+  getSellerProfile(id: string): Promise<any> {
+    const url = `http://localhost:5556/api/auth/seller-profile/${id}`;
+    let promise = new Promise((resolve, reject) => {
+      this.http
+        .get<any>(url)
+        .toPromise()
+        .then(
+          (res) => {
+            resolve(res);
+          },
+          (error) => {
+            reject(error);
+          }
+        );
+    });
+  
+    return promise;
+  }
+  
+  updateSellerProfile(id: string, updatedUser: any): Promise<any> {
+    const url = `http://localhost:5556/api/auth/seller-profile/${id}`;
+    let promise = new Promise((resolve, reject) => {
+      this.http
+        .put<any>(url, updatedUser)
+        .toPromise()
+        .then(
+          (res) => {
+            resolve(res);
+          },
+          (error) => {
+            reject(error);
+          }
+        );
+    });
+  
+    return promise;
+  }
+  getProfilePicture(id: string): Promise<any> {
+    const url = `http://localhost:5556/api/auth/seller-profile/${id}/profile-picture`;
+  
+    let promise = new Promise((resolve, reject) => {
+      this.http
+        .get(url, { responseType: 'arraybuffer' })
+        .toPromise()
+        .then(
+          (res: ArrayBuffer | undefined) => {
+            if (res) {
+              const base64 = btoa(
+                Array.from(new Uint8Array(res))
+                  .map((byte) => String.fromCharCode(byte))
+                  .join('')
+              );
+              const imageUrl = `data:image/jpeg;base64,${base64}`;
+              resolve(imageUrl);
+            } else {
+              reject("Profile picture not found.");
+            }
+          },
+          (error) => {
+            reject(error);
+          }
+        );
+    });
+  
+    return promise;
+  }
+  
+  updateSellerProfilePicture(id: string, file: File): Promise<any> {
+    const url = `http://localhost:5556/api/auth/seller-profile/${id}/profile-picture`;
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    let promise = new Promise((resolve, reject) => {
+      this.http
+        .put<any>(url, formData)
+        .toPromise()
+        .then(
+          (res) => {
+            resolve(res);
+          },
+          (error) => {
+            reject(error);
+          }
+        );
+    });
+
+    return promise;
+  }
+
   getAllProperties(): Promise<any> {
     if(!this.authStateService.hasCurrentUser()) {
       throw new Error("No user");

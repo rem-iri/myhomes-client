@@ -7,6 +7,8 @@ import { SharedModule } from '../shared/shared.module';
 import { PropertiesComponent } from './properties/properties.component';
 import { ProfileComponent } from './profile/profile.component';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [PropertiesComponent, ProfileComponent],
@@ -15,6 +17,9 @@ import { DashboardModule } from './dashboard/dashboard.module';
     SharedModule,
     SellerPortalRoutingModule,
     DashboardModule,
+    MatSnackBarModule,
+    ReactiveFormsModule
+    
   ]
 })
 export class SellerPortalModule {}

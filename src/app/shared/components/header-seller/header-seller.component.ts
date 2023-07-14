@@ -16,6 +16,7 @@ export class HeaderSellerComponent implements OnInit {
   isScrolled: boolean;
   menuList: Menu[] = [];
   isLessThenLargeDevice: boolean;
+  userName: string = '';
   constructor(
     private authService: AuthService,
     private route: Router,
