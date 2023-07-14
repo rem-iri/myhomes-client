@@ -1,1 +1,93 @@
-<p>properties works!</p>
+
+<div class="px-5">
+    
+    <div class="flex justify-between py-5 mt-5">
+        <h3>My Properties</h3>
+        <a [routerLink]="['../create-property']"  mat-flat-button  color="accent">
+            <mat-icon>house</mat-icon>
+            Add Property
+        </a>
+    </div>
+    
+    <div class="" *ngIf="properties.length">
+        <div class="table-inside">
+            <table class="order-table table-auto ltMd:responsive">
+                <thead>
+                    <tr class="border text-left">
+                        <th>
+                            <span class="text-gray-800"></span>
+                        </th>
+                        <th>
+                            <span class="text-gray-800">Title</span>
+                        </th>
+                        <th>
+                            <span class="text-gray-800">Price</span>
+					</th>
+	
+					<th>
+                        <span class="text-gray-800">Created</span>
+					</th>
+                    
+					<th>
+                        <span class="text-gray-800">Status</span>
+					</th>
+                    
+					<th class="text-right">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let property of properties" class="border">
+                    <td>
+                        <div class="max-h-64 w-64 mr-3 border grid grid-rows-3 grid-cols-3 gap-1 " *ngIf="property?.images?.[0]?.imageUrl">
+                            
+                            <div class="col-span-3 row-span-2 overflow-hidden">
+                                <img [src]="property?.images?.[0]?.imageUrl" alt="img">
+                            </div>
+                            <ng-container *ngFor="let image of [].constructor(3); let i=index">
+                                <div class="overflow-hidden">
+                                    <img class="h-full w-full object-cover" [src]="'http://localhost:5556/api/upload/get/' + property?.images[i+1]?.imageUrl" alt="img">
+                                </div>
+                            </ng-container>
+                        </div>
+						<!-- <a class="text-primary" href="/">{{property?.id}}</a> -->
+					</td>
+					<td>
+                        {{property?.listingTitle | titlecase }}
+					</td>
+					<td>
+                        <span>{{property?.price | currency:'PHP'}}</span>
+					</td>
+					<td>
+                        <span>{{property?.dateCreated}}</span>
+					</td>
+					<td>
+                        <div [ngClass]="{
+                            'bg-yellow-500 text-yellow-900': property?.sold === false,
+							'bg-green-400 text-yellow-800': property?.sold === true
+                        }" 
+							class="text-[12px] bg-opacity-20 rounded-full px-3 inline-block font-bold py-[3px]"
+						>
+							{{ property?.sold ? "Sold" : "Up"}}
+						</div>
+					</td>
+					<td class="text-right">
+                        <button class="action_icon__btn" mat-icon-button [matMenuTriggerFor]="menu">
+                            <mat-icon class="text-center">more_vert</mat-icon>
+						</button>
+						<mat-menu #menu="matMenu" xposition="before">
+                            <button mat-menu-item>
+                                <mat-icon>edit</mat-icon>
+								<span>Edit</span>
+							</button>
+							<button mat-menu-item>
+                                <mat-icon>delete</mat-icon>
+								<span>Delete</span>
+							</button>
+						</mat-menu>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</div>

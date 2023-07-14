@@ -1,13 +1,17 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from "../../environments/environment";
+import { AuthStateService } from "./auth-state.service";
 
 @Injectable({ providedIn: "root" })
 export class HttpClientService {
   private readonly API_HOST = environment.API_HOST;
   private readonly COURSES_ENDPOINT: string = `${this.API_HOST}/photos`;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private authStateService: AuthStateService
+    ) {}
 
   getCourses(): Promise<any> {
     let promise = new Promise((resolve, reject) => {
@@ -68,6 +72,69 @@ export class HttpClientService {
           },
           (msg) => {
             console.log("Caught in getToken error: ", msg);
+            reject(msg);
+          }
+        );
+    });
+
+    return promise;
+  }
+
+  getAllProperties(): Promise<any> {
+    if(!this.authStateService.hasCurrentUser()) {
+      throw new Error("No user");
+    }
+    
+    let authenticationHeaders = {
+      headers: new HttpHeaders()
+        .set('Authorization',  `Bearer ${(this.authStateService.getCurrentUser().token)}`)
+        .set('Content-Type', 'application/json')
+    }
+
+    let promise = new Promise((resolve, reject) => {
+      this.http
+        .get<any[]>(`http://localhost:5556/api/properties`, authenticationHeaders)
+        .toPromise()
+        .then(
+          (res) => {
+            console.log("getAllProperties success: ", res);
+            resolve(res);
+          },
+          (msg) => {
+            console.log("Caught in getAllProperties error: ", msg);
+            reject(msg);
+          }
+        );
+    });
+
+    return promise;
+  }
+
+  createProperty(property: any): Promise<any> {
+    if(!this.authStateService.hasCurrentUser()) {
+      throw new Error("No user");
+    }
+    
+    let authenticationHeaders = {
+      headers: new HttpHeaders()
+        .set('Authorization',  `Bearer ${(this.authStateService.getCurrentUser().token)}`)
+        .set('Content-Type', 'application/json')
+    }
+
+    let promise = new Promise((resolve, reject) => {
+      this.http
+        .post<any[]>(`http://localhost:5556/api/properties`, 
+        property,
+        authenticationHeaders,
+        )
+        .toPromise()
+        .then(
+          (res) => {
+            console.log("createProperty success: ", res);
+            resolve(res);
+          },
+          (msg) => {
+            console.log("Caught in createProperty error: ", msg);
             reject(msg);
           }
         );

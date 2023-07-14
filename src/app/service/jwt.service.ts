@@ -9,9 +9,6 @@ export class JwtService {
   constructor() { }
 
   isExpired(accessToken: string) {
-    if(accessToken == null) {
-      return true;
-    }
     let payload: any = jwt_decode(accessToken);
     console.log("PAYLOAD: " + JSON.stringify(payload));
 
