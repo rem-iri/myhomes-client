@@ -21,4 +21,24 @@ export class PropertiesComponent implements OnInit{
   }
 
   properties: any[] = [];
+
+  async deleteProperty(id: string) {
+    try {
+      await this.httpClient.deleteProperty(id);
+      this.properties = await this.httpClient.getAllProperties();
+    } catch(error) {
+      console.log("On Properties Component: error deleteProperty", error);
+    }
+    
+  }
+
+  async updatePropertySold(id: string) {
+    try {
+      await this.httpClient.updatePropertySold(id);
+      this.properties = await this.httpClient.getAllProperties();
+    } catch(error) {
+      console.log("On Properties Component: error updatePropertySold", error);
+    }
+    
+  }
 }

@@ -142,4 +142,69 @@ export class HttpClientService {
 
     return promise;
   }
+
+  deleteProperty(id: string): Promise<any> {
+    if(!this.authStateService.hasCurrentUser()) {
+      throw new Error("No user");
+    }
+    
+    let authenticationHeaders = {
+      headers: new HttpHeaders()
+        .set('Authorization',  `Bearer ${(this.authStateService.getCurrentUser().token)}`)
+        .set('Content-Type', 'application/json')
+    }
+
+    let promise = new Promise((resolve, reject) => {
+      this.http
+        .delete<any[]>(`http://localhost:5556/api/properties/${id}`, 
+        authenticationHeaders,
+        )
+        .toPromise()
+        .then(
+          (res) => {
+            console.log("deleteProperty success: ", res);
+            resolve(res);
+          },
+          (msg) => {
+            console.log("Caught in deleteProperty error: ", msg);
+            reject(msg);
+          }
+        );
+    });
+
+    return promise;
+  }
+
+  updatePropertySold(id: string): Promise<any> {
+    if(!this.authStateService.hasCurrentUser()) {
+      throw new Error("No user");
+    }
+    
+    let authenticationHeaders = {
+      headers: new HttpHeaders()
+        .set('Authorization',  `Bearer ${(this.authStateService.getCurrentUser().token)}`)
+        .set('Content-Type', 'application/json')
+    }
+
+    let promise = new Promise((resolve, reject) => {
+      this.http
+        .put<any[]>(`http://localhost:5556/api/properties/updateSold/${id}`,
+        null,
+        authenticationHeaders,
+        )
+        .toPromise()
+        .then(
+          (res) => {
+            console.log("deleteProperty success: ", res);
+            resolve(res);
+          },
+          (msg) => {
+            console.log("Caught in deleteProperty error: ", msg);
+            reject(msg);
+          }
+        );
+    });
+
+    return promise;
+  }
 }

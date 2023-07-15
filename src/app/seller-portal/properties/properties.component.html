@@ -9,12 +9,13 @@
         </a>
     </div>
     
+    
     <div class="" *ngIf="properties.length">
         <div class="table-inside">
-            <table class="order-table table-auto ltMd:responsive">
+            <table class="order-table table-fixed ltMd:responsive">
                 <thead>
                     <tr class="border text-left">
-                        <th>
+                        <th class="w-96">
                             <span class="text-gray-800"></span>
                         </th>
                         <th>
@@ -37,18 +38,13 @@
 			</thead>
 			<tbody>
 				<tr *ngFor="let property of properties" class="border">
-                    <td>
-                        <div class="max-h-64 w-64 mr-3 border grid grid-rows-3 grid-cols-3 gap-1 " *ngIf="property?.images?.[0]?.imageUrl">
-                            
-                            <div class="col-span-3 row-span-2 overflow-hidden">
-                                <img [src]="property?.images?.[0]?.imageUrl" alt="img">
-                            </div>
-                            <ng-container *ngFor="let image of [].constructor(3); let i=index">
-                                <div class="overflow-hidden">
-                                    <img class="h-full w-full object-cover" [src]="'http://localhost:5556/api/upload/get/' + property?.images[i+1]?.imageUrl" alt="img">
-                                </div>
-                            </ng-container>
+                    <td class="w-96 p-10">
+                        
+                        <p class="" *ngIf="property?.images?.length === 0">No image to show</p>
+                        <div class="rounded-md h-64 w-80 overflow-hidden" *ngIf="property?.images?.[0]?.imageUrl">
+                            <img class="h-full w-full object-cover" [src]="property?.images?.[0]?.imageUrl" alt="img">
                         </div>
+
 						<!-- <a class="text-primary" href="/">{{property?.id}}</a> -->
 					</td>
 					<td>
@@ -58,7 +54,7 @@
                         <span>{{property?.price | currency:'PHP'}}</span>
 					</td>
 					<td>
-                        <span>{{property?.dateCreated}}</span>
+                        <span>{{property?.dateCreated | date}}</span>
 					</td>
 					<td>
                         <div [ngClass]="{
@@ -76,10 +72,18 @@
 						</button>
 						<mat-menu #menu="matMenu" xposition="before">
                             <button mat-menu-item>
+                                <mat-icon>message</mat-icon>
+								<span>View Inquiries</span>
+							</button>
+                            <button mat-menu-item >
                                 <mat-icon>edit</mat-icon>
 								<span>Edit</span>
 							</button>
-							<button mat-menu-item>
+                            <button mat-menu-item (click)="updatePropertySold(property.id)" *ngIf="!property.sold">
+                                <mat-icon>attach_money</mat-icon>
+								<span>Mark as Sold</span>
+							</button>
+							<button mat-menu-item (click)="deleteProperty(property.id)">
                                 <mat-icon>delete</mat-icon>
 								<span>Delete</span>
 							</button>
