@@ -29,18 +29,18 @@ export class CreatePropertyComponent implements OnInit{
 
   
   user_id = new FormControl("");
-  listingTitle = new FormControl("asd", [Validators.required]);
-  propertyType = new FormControl("asd", [Validators.required]);
-  description = new FormControl("asd", [Validators.required]);
+  listingTitle = new FormControl("", [Validators.required]);
+  propertyType = new FormControl("", [Validators.required]);
+  description = new FormControl("", [Validators.required]);
   furnishing = new FormControl("", [Validators.required]);
   saleType = new FormControl("", [Validators.required]);
   bath = new FormControl(0, [Validators.required, Validators.min(0)]);
   bedroom = new FormControl(0, [Validators.required, Validators.min(0)]);
   price = new FormControl(0, [Validators.required, Validators.min(0)]);
   area = new FormControl(0, [Validators.required, Validators.min(0)]);
-  houseNumber = new FormControl("asd", [Validators.required]);
-  street = new FormControl("asd", [Validators.required]);
-  village = new FormControl("asd", [Validators.required]);
+  houseNumber = new FormControl("", [Validators.required]);
+  street = new FormControl("", [Validators.required]);
+  village = new FormControl("", [Validators.required]);
   city = new FormControl("", [Validators.required]);
   province = new FormControl("", [Validators.required]);
   region = new FormControl("", [Validators.required]);
