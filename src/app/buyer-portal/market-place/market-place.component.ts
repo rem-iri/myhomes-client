@@ -1,289 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { HttpClientService } from 'src/app/shared/http-client.service';
 
 @Component({
   selector: 'app-market-place',
   templateUrl: './market-place.component.html',
   styleUrls: ['./market-place.component.scss']
 })
-export class MarketPlaceComponent {
-  properties = [
-    {
-      image: 'assets/images/house 2.jpg',
-      title: 'Beautiful House',
-      price: 200000,
-      information: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    },
-    {
-      image: 'assets/images/house3.jpeg',
-      title: 'Luxury Apartment',
-      price: 300000,
-      information: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    },
-    {
-      image: 'assets/images/house 2.jpg',
-      title: 'Beautiful House',
-      price: 200000,
-      information: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    },
-    {
-      image: 'assets/images/house3.jpeg',
-      title: 'Luxury Apartment',
-      price: 300000,
-      information: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    },
-    {
-      image: 'assets/images/house 2.jpg',
-      title: 'Beautiful House',
-      price: 200000,
-      information: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    },
-    {
-      image: 'assets/images/house3.jpeg',
-      title: 'Luxury Apartment',
-      price: 300000,
-      information: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    },
-    {
-      image: 'assets/images/house 2.jpg',
-      title: 'Beautiful House',
-      price: 200000,
-      information: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    },
-    {
-      image: 'assets/images/house3.jpeg',
-      title: 'Luxury Apartment',
-      price: 300000,
-      information: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    },
-    {
-      image: 'assets/images/house 2.jpg',
-      title: 'Beautiful House',
-      price: 200000,
-      information: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    },
-    {
-      image: 'assets/images/house3.jpeg',
-      title: 'Luxury Apartment',
-      price: 300000,
-      information: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    },
-    {
-      image: 'assets/images/house 2.jpg',
-      title: 'Beautiful House',
-      price: 200000,
-      information: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    },
-    {
-      image: 'assets/images/house3.jpeg',
-      title: 'Luxury Apartment',
-      price: 300000,
-      information: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    },
-    {
-      image: 'assets/images/house 2.jpg',
-      title: 'Beautiful House',
-      price: 200000,
-      information: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    },
-    {
-      image: 'assets/images/house3.jpeg',
-      title: 'Luxury Apartment',
-      price: 300000,
-      information: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    },
-    {
-      image: 'assets/images/house 2.jpg',
-      title: 'Beautiful House',
-      price: 200000,
-      information: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    },
-    {
-      image: 'assets/images/house3.jpeg',
-      title: 'Luxury Apartment',
-      price: 300000,
-      information: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    },
-    {
-      image: 'assets/images/house 2.jpg',
-      title: 'Beautiful House',
-      price: 200000,
-      information: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    },
-    {
-      image: 'assets/images/house3.jpeg',
-      title: 'Luxury Apartment',
-      price: 300000,
-      information: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    },
-    {
-      image: 'assets/images/house 2.jpg',
-      title: 'Beautiful House',
-      price: 200000,
-      information: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    },
-    {
-      image: 'assets/images/house3.jpeg',
-      title: 'Luxury Apartment',
-      price: 300000,
-      information: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    },
-    {
-      image: 'assets/images/house 2.jpg',
-      title: 'Beautiful House',
-      price: 200000,
-      information: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    },
-    {
-      image: 'assets/images/house3.jpeg',
-      title: 'Luxury Apartment',
-      price: 300000,
-      information: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    },
-    {
-      image: 'assets/images/house 2.jpg',
-      title: 'Beautiful House',
-      price: 200000,
-      information: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    },
-    {
-      image: 'assets/images/house3.jpeg',
-      title: 'Luxury Apartment',
-      price: 300000,
-      information: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    },
-    {
-      image: 'assets/images/house 2.jpg',
-      title: 'Beautiful House',
-      price: 200000,
-      information: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    },
-    {
-      image: 'assets/images/house3.jpeg',
-      title: 'Luxury Apartment',
-      price: 300000,
-      information: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    },
-    {
-      image: 'assets/images/house 2.jpg',
-      title: 'Beautiful House',
-      price: 200000,
-      information: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    },
-    {
-      image: 'assets/images/house3.jpeg',
-      title: 'Luxury Apartment',
-      price: 300000,
-      information: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    },
-    {
-      image: 'assets/images/house 2.jpg',
-      title: 'Beautiful House',
-      price: 200000,
-      information: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    },
-    {
-      image: 'assets/images/house3.jpeg',
-      title: 'Luxury Apartment',
-      price: 300000,
-      information: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    },
-    {
-      image: 'assets/images/house 2.jpg',
-      title: 'Beautiful House',
-      price: 200000,
-      information: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    },
-    {
-      image: 'assets/images/house3.jpeg',
-      title: 'Luxury Apartment',
-      price: 300000,
-      information: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    },
-    {
-      image: 'assets/images/house 2.jpg',
-      title: 'Beautiful House',
-      price: 200000,
-      information: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    },
-    {
-      image: 'assets/images/house3.jpeg',
-      title: 'Luxury Apartment',
-      price: 300000,
-      information: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    },
-    {
-      image: 'assets/images/house 2.jpg',
-      title: 'Beautiful House',
-      price: 200000,
-      information: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    },
-    {
-      image: 'assets/images/house3.jpeg',
-      title: 'Luxury Apartment',
-      price: 300000,
-      information: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    },
-    {
-      image: 'assets/images/house 2.jpg',
-      title: 'Beautiful House',
-      price: 200000,
-      information: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    },
-    {
-      image: 'assets/images/house3.jpeg',
-      title: 'Luxury Apartment',
-      price: 300000,
-      information: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    },
-    {
-      image: 'assets/images/house 2.jpg',
-      title: 'Beautiful House',
-      price: 200000,
-      information: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    },
-    {
-      image: 'assets/images/house3.jpeg',
-      title: 'Luxury Apartment',
-      price: 300000,
-      information: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    },
-    {
-      image: 'assets/images/house 2.jpg',
-      title: 'Beautiful House',
-      price: 200000,
-      information: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    },
-    {
-      image: 'assets/images/house3.jpeg',
-      title: 'Luxury Apartment',
-      price: 300000,
-      information: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    },
-    {
-      image: 'assets/images/house 2.jpg',
-      title: 'Beautiful House',
-      price: 200000,
-      information: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    },
-    {
-      image: 'assets/images/house3.jpeg',
-      title: 'Luxury Apartment',
-      price: 300000,
-      information: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    },
-    {
-      image: 'assets/images/house 2.jpg',
-      title: 'Beautiful House',
-      price: 200000,
-      information: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    },
-    {
-      image: 'assets/images/house3.jpeg',
-      title: 'Luxury Apartment',
-      price: 300000,
-      information: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    },
-  ];
+export class MarketPlaceComponent implements OnInit {
+  constructor(
+    private httpClient: HttpClientService,
+    private router: Router
+    ){}
+
+  async ngOnInit(){
+    
+    try {
+        this.properties = await this.httpClient.getAllProperties();
+    } catch(error) {
+      console.log("On Properties Component: error ", error);
+    } 
+  }
+  properties: any[] = [];
+ 
   currentPage = 1;
   pageSize = 9;
   
@@ -295,5 +34,10 @@ export class MarketPlaceComponent {
   
   loadNextPage(): void {
     this.currentPage++;
+  }
+
+  viewPropertyDetails(id: string) {
+ 
+    this.router.navigate(['/buyer/properties-details', id]);
   }
 }

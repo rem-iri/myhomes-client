@@ -1,16 +1,25 @@
-<div class="properties-area">
-  <h2 class="property-title mt-4 ml-10">Properties For Sale</h2>
-  <div class="slider-container">
-    <!-- <ng-image-slider [images]="imgCollection" #nav>
-      <ng-template ng-header-tmp let-image="image">
-        <div class="image-container">
-          <img [src]="image.thumbImage" alt="{{ image.alt }}" class="image-item" />
-          <div class="image-description">
-            <h5 class="image-title">{{ image.title }}</h5>
-            <p class="image-text">{{ image.description }}</p>
-          </div>
-        </div>
-      </ng-template>
-    </ng-image-slider> -->
-  </div>
+<div class="parentcontainer">
+<div class="carouselcontainer"><c-carousel>
+  <c-carousel-indicators></c-carousel-indicators>
+  <c-carousel-inner>
+    <c-carousel-item *ngFor="let slide of slides">
+      <img
+        alt="{{slide.title}}"
+        class="d-block w-100"
+        loading="lazy"
+        src="{{slide.src}}"
+      />
+      <c-carousel-caption class="d-none d-md-block">
+        <h3>{{slide.title}}</h3>
+        <p>{{slide.subtitle}}</p>
+      </c-carousel-caption>
+    </c-carousel-item>
+  </c-carousel-inner>
+  <c-carousel-control [routerLink] caption="Previous" direction="prev"></c-carousel-control>
+  <c-carousel-control [routerLink] caption="Next" direction="next"></c-carousel-control>
+</c-carousel>
+
+</div><div class="textforproperties text-center  "> <h1 class="bg-orange ">Unlock Your Dream <br>Property Today<br><br></h1>
+  <h3>Choose from a Diverse Collection of Exquisite Homes</h3></div>
+
 </div>

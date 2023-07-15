@@ -1,47 +1,23 @@
-.slider-container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0px auto; /* Add margin for top and bottom spacing */
-    padding-top: 40px; /* Add padding for top spacing */
-  }
-  
-  .properties-area {
-    width: 100%;
-    max-width: 1500px;
-    height: 500px;
-    margin: 0 auto;
-   
-  }
-  .image-item {
-    border: 2px solid #ccc;
-    margin-bottom: 10px;
-  }
-  
-  .image-description {
-    text-align: center;
-  }
-  
-  .image-title {
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  .image-text {
-    font-size: 14px;
-  }
-  .image-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .image-item {
-    border: 10px solid #ccc;
-    margin: 10px;
-  }
-  
-  .image-description {
-    text-align: center;
-  }
-  
+.carouselcontainer{
+  height: 700px;
+  width:1000px;
+  padding: 50px;
+  border-radius: 20px;
+  border-color: blue;
+}
+.parentcontainer{
+  width:1500;
+  background-color: white;
+  display: flex;
+}
+.textforproperties{
+  float:right;
+  flex: 1;
+  margin-top:150px
+}
+
+h1{
+  color:#0d63ee;
+  margin-top:10px;
+  padding-top: 10px;
+}

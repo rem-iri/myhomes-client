@@ -21,6 +21,8 @@
     "@angular/platform-browser": "^16.1.2",
     "@angular/platform-browser-dynamic": "^16.1.2",
     "@angular/router": "^16.1.2",
+    "@coreui/angular": "^4.5.8",
+    "@coreui/icons-angular": "^4.5.8",
     "@ngneat/tailwind": "^7.0.3",
     "@types/chart.js": "^2.9.37",
     "chart.js": "^4.3.0",

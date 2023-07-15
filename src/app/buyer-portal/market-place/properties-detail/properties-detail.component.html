@@ -1,58 +1,60 @@
-<div class="container mt-40">
-  <div class="title-container">
+<div *ngIf="properties" class="container mt-40">
+    <div class="title-container">
       <h2 class="titleproperty ml-10">We have the Best For You</h2>
-  </div>
-  <div class="content-container">
-      <div class="image-container mt-10">
+    </div>
+    <div class="content-container">
+        <div class="image-container mt-10">
           <div class="image-wrapper mt-10">
-              <div class="image-inner-wrapper">
-                  <img class="current-image mt-10" [src]="properties.mainImage" alt="Current Image" />
-              </div>
+            <div class="image-inner-wrapper">
+              <img class="current-image mt-10" [src]="currentImage" alt="Current Image" />
+            </div>
           </div>
           <div class="other-images-container">
-              <div class="other-image" *ngFor="let image of properties.otherImages" (click)="onImageClick(image)">
-                  <img [src]="image" alt="Other Image" class="other-image-thumbnail" />
-              </div>
+            <button (click)="navigateImages('prev')" class="arrow-button prev-button">&lt;</button>
+            <div class="other-image" *ngFor="let image of properties?.images; let i = index" (click)="setCurrentImage(i)">
+              <img [src]="image.imageUrl" alt="Other Image" class="other-image-thumbnail" />
+            </div>
+            <button (click)="navigateImages('next')" class="arrow-button next-button">&gt;</button>
           </div>
-          <app-properties-information></app-properties-information>
+        <app-properties-information></app-properties-information>
       </div>
-<div>
       <div class="properties-details float-right mt-20">
-          <div class="title text-center text-white">
-              <h2 class="properties-title">{{ properties.title }}</h2>
-          </div>
-          <div class="description">
-              <h4 class="description_title ml-4">Description</h4>
-              <p class="properties-description ml-4 text-gray-800">{{ properties.description }}</p>
-          </div>
-          <div class="description">
-              <h4 class="description_title ml-4">Price</h4>
-              <p class="properties-price ml-4 text-gray-800">
-                <svg class="w-1 h-1 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                  <use xlink:href="https://www.svgrepo.com/svg/530124/money"></use>
-                </svg>
-                {{ properties.price | currency:'PHP' }}
-              </p>
-              
-          </div>
-          <div class="description">
-              <h4 class="description_title ml-4">Location</h4>
-              <p class="properties-location ml-4 text-gray-800">{{ properties.location }}</p>
-          </div>
-      </div>
-
-      <div class="properties-details2  ">
-          <div class="imageseller text-center text-white  mx-auto">
-            <img class="seller-image border-gray rounded-full   mx-auto " [src]="properties.sellerImage" alt="seller Image" />
-          </div>
-          <div class="sellername-container  text-center mt-10"> 
-            <h4 class="sellernamemain  font-bold mx-auto">{{ properties.sellerName }}</h4>
-            <p class="seller mx-auto font-bold">Seller</p>
+        <div class="title text-center text-white">
+          <h2 class="properties-title">{{ properties.listingTitle }}</h2>
         </div>
-        <div class="button-container text-center mt-4">
-            <button class="rounded-full bg-blue-500 text-white py-4 px-14 hover:bg-orange">Button</button>
-          </div>
+        <div class="description">
+          <h4 class="description_title ml-4">Description</h4>
+          <p class="properties-description ml-4 text-gray-800">{{ properties.description }}</p>
+        </div>
+        <div class="description">
+          <h4 class="description_title ml-4">Price</h4>
+          <p class="properties-price ml-4 text-gray-800">
+            <svg class="w-1 h-1 mr-2" viewBox="0 0 20 20" fill="currentColor">
+              <use xlink:href="https://www.svgrepo.com/svg/530124/money"></use>
+            </svg>
+            {{ properties.price | currency:'PHP' }}
+          </p>
+        </div>
+        <div class="description">
+          <h4 class="description_title ml-4">Location</h4>
+          <p class="properties-location ml-4 text-gray-800">{{ properties.houseNumber }}</p>
+        </div>
+        <div class="description">
+          <h4 class="description_title ml-4">Bathrooms</h4>
+          <p class="properties-bathrooms ml-4 text-gray-800">{{ properties.bath }}</p>
+        </div>
+        <div class="description">
+          <h4 class="description_title ml-4">Bedrooms</h4>
+          <p class="properties-bedrooms ml-4 text-gray-800">{{ properties.bedroom }}</p>
+        </div>
+        <!-- Display other property details as needed -->
       </div>
-  </div>
- 
+   
+        <div class="button-container text-center mt-4">
+          <button (click)="viewSellerInformation(properties.user_id)" class="rounded-full bg-blue-500 text-white py-4 px-14 hover:bg-orange">View Seller</button>
 
+        </div>
+      </div>
+    </div>
+ 
+  

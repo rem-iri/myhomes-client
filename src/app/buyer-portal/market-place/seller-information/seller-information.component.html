@@ -1,13 +1,17 @@
-<h3>Sellers</h3>
-<table>
+<div class="mt-15">
+<h3>Seller Information</h3>
+<table *ngIf="seller">
   <tr>
     <th>Name</th>
     <th>Email</th>
+    <th>Account Type</th>
     <th>Company</th>
   </tr>
-  <tr *ngFor="let seller of sellers">
+  <tr>
     <td>{{ seller.firstName }} {{ seller.lastName }}</td>
     <td>{{ seller.email }}</td>
-    <td>{{ seller.company }}</td>
+    <td>{{ seller.accountType }}</td>
+ 
   </tr>
 </table>
+</div>

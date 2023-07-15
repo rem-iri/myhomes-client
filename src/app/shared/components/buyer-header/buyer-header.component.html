@@ -4,8 +4,14 @@
       <div class="flex items-center">
         <a class="logo" [routerLink]="['']"><img src="assets/images/logo.png" alt="Logo" /></a>
         <ul class="flex item-center ml-5" *ngIf="!isLessThenLargeDevice && menuList && menuList.length">
-          <li *ngFor="let menu of menuList">
-            <a mat-button [routerLink]="[menu.path]" routerLinkActive="bg-gray-100" class="text-lg font-bold" style="color: white;">{{ menu.name }}</a>
+          <li>
+            <a mat-button [routerLink]="['buyer/home']" routerLinkActive="bg-gray-100" class="text-lg font-bold" style="color: white;">Home</a>
+          </li>
+          <li>
+            <a mat-button [routerLink]="['buyer/marketplace']"  routerLinkActive="bg-gray-100" class="text-lg font-bold" style="color: white;">Marketplace</a>
+          </li>
+          <li>
+            <a mat-button [routerLink]="['buyer/seller']"  routerLinkActive="bg-gray-100" class="text-lg font-bold" style="color: white;">Seller</a>
           </li>
         </ul>
       </div>

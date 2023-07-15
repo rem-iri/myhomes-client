@@ -1,32 +1,28 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { MarketPlaceComponent } from './market-place/market-place.component';
+import { RouterModule, Routes,RouterLink } from '@angular/router';
 import { SellerComponent } from './seller/seller.component';
 import { PropertiesDetailComponent } from './market-place/properties-detail/properties-detail.component';
+import { PropertiesComponent } from './home/properties/properties.component';
+import { SellerModule } from './seller/seller.module';
 
 
 const routes: Routes = [
-  
-  {
-    path: 'home',
-    component: HomeComponent
-  },
-  {
-    path: '',
-    component: HomeComponent
-  },
   {
     path: 'marketplace',
-    component: MarketPlaceComponent
+    loadChildren: () => import('./market-place/market-place.module').then(m => m.MarketPlaceModule)
   },
   {
-    path: 'propertydetails',
-    component: PropertiesDetailComponent
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
   },
+
+  // {
+  //   path: 'properties',
+  //   component: PropertiesComponent
+  // },
   {
     path: 'seller',
-    component: SellerComponent
+    loadChildren: () => import('./seller/seller.module').then(m => m.SellerModule)
   }
  
 ];

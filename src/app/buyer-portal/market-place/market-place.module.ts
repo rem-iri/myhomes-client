@@ -4,15 +4,19 @@ import { PropertiesCardComponent } from './properties-card/properties-card.compo
 import { PropertiesListComponent } from './properties-list/properties-list.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { PropertiesInformationComponent } from './properties-information/properties-information.component';
+import { MarketPlaceComponent } from './market-place.component';
+import { MarketPlaceRoutingModule } from './market-place-routing.module';
+import { SellerInformationComponent } from './seller-information/seller-information.component';
 
 
 
 @NgModule({
-  declarations: [PropertiesCardComponent,PropertiesListComponent, PropertiesInformationComponent,PropertiesInformationComponent],
+  declarations: [PropertiesCardComponent,PropertiesListComponent,MarketPlaceComponent ,PropertiesInformationComponent, SellerInformationComponent],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    MarketPlaceRoutingModule
   ],
-  exports:[PropertiesCardComponent,PropertiesListComponent,PropertiesInformationComponent]
+  exports:[PropertiesCardComponent,PropertiesListComponent,MarketPlaceComponent ,PropertiesInformationComponent,]
 })
 export class MarketPlaceModule { }

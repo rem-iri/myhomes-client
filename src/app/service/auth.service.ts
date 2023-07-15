@@ -46,6 +46,7 @@ export class AuthService {
         let user: SellerUser = new SellerUser();
         
         user.token = authenticatedUser.accessToken ?? "";
+        user.id = authenticatedUser.id ?? "";
         user.email = authenticatedUser.email ?? "";
         user.firstName = authenticatedUser.firstName ?? "";
         user.lastName = authenticatedUser.lastName ?? "";
@@ -58,6 +59,7 @@ export class AuthService {
         let user: User = new User();
       
         user.token = authenticatedUser.accessToken ?? "";
+        user.id = authenticatedUser.id ?? "";
         user.email = authenticatedUser.email ?? "";
         user.firstName = authenticatedUser.accessToken ?? "";
         user.lastName = authenticatedUser.accessToken ?? "";
