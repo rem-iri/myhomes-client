@@ -28,8 +28,6 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatDialogModule} from '@angular/material/dialog';
 import { BuyerLayoutComponent } from './components/layouts/buyer-layout/buyer-layout.component';
 import { BuyerHeaderComponent } from './components/buyer-header/buyer-header.component';
-import { CarouselModule } from '@coreui/angular';
-import { IconModule } from '@coreui/icons-angular';
 
 
 const commonModules = [
@@ -50,8 +48,6 @@ const commonModules = [
   MatRadioModule,
   MatSlideToggleModule,
   MatDialogModule,
-  CarouselModule,
-  IconModule 
 ];
 
 @NgModule({

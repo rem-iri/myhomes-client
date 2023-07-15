@@ -63,7 +63,7 @@
           <textarea matInput formControlName="about" placeholder="Short description of yourself"
             maxlength="300" [disabled]="!isEditing" (input)="updateCharacterCount()"></textarea>
           <div class="character-count">
-            <span id="character-count">{{ 300 - profileForm.get('about')?.value.length }}</span> characters remaining
+            <span id="character-count">{{ 300 - (profileForm.get('about')?.value?.length ?? 0) }}</span> characters remaining
           </div>
         </mat-form-field>
         <div class="update-button">
