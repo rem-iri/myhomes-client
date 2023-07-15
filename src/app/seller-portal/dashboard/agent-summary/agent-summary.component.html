@@ -1,53 +1,65 @@
 <div class="card-container">
-    <mat-card class="custom-card">
-      <div class="customed-icon">
-        <mat-icon class="large-icon">home</mat-icon>
-      </div>
-      <mat-card-header>
-        <mat-card-title class="header-right">Open Listings</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        
-      </mat-card-content>
-    </mat-card>
-  
-    <mat-card class="custom-card">
-      <div class="customed-icon">
-        <mat-icon class="large-icon">done</mat-icon>
-      </div>
-      <mat-card-header>
-        <mat-card-title>Closed Deals</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
+  <mat-card class="custom-card">
+    <div class="customed-icon">
+      <mat-icon class="large-icon">home</mat-icon>
+    </div>
+    <mat-card-header>
+      <mat-card-title class="header-right">Open Listings</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ openListingsContent }}</p>
+    </mat-card-content>
+    <mat-card-footer>
+      <hr class="footer-line" />
+      <div class="footer-content">Footer text</div>
+    </mat-card-footer>
+  </mat-card>
 
+  <mat-card class="custom-card">
+    <div class="customed-icon">
+      <mat-icon class="large-icon">done</mat-icon>
+    </div>
+    <mat-card-header>
+      <mat-card-title>Closed Deals</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ closedDealsContent }}</p>
+    </mat-card-content>
+    <mat-card-footer>
+      <hr class="footer-line" />
+      <div class="footer-content">Footer text</div>
+    </mat-card-footer>
+  </mat-card>
 
-      </mat-card-content>
-    </mat-card>
-  
-    <mat-card class="custom-card">
-        <div class="customed-icon">
-            <mat-icon class="large-icon">message</mat-icon>
-          </div>
-      <mat-card-header>
-        <mat-card-title>Total Inquiries</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-      
-   
-      </mat-card-content>
-    </mat-card>
-  
-    <mat-card class="custom-card">
-        <div class="customed-icon">
-            <mat-icon class="large-icon">card_membership</mat-icon>
-          </div>
-      <mat-card-header>
-        <mat-card-title>Subscription</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-     
+  <mat-card class="custom-card">
+    <div class="customed-icon">
+      <mat-icon class="large-icon">message</mat-icon>
+    </div>
+    <mat-card-header>
+      <mat-card-title>Total Inquiries</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ totalInquiriesContent }}</p>
+    </mat-card-content>
+    <mat-card-footer>
+      <hr class="footer-line" />
+      <div class="footer-content">Footer text</div>
+    </mat-card-footer>
+  </mat-card>
 
-      </mat-card-content>
-    </mat-card>
-  </div>
-  
+  <mat-card class="custom-card">
+    <div class="customed-icon">
+      <mat-icon class="large-icon">card_membership</mat-icon>
+    </div>
+    <mat-card-header>
+      <mat-card-title>Subscription</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ subscriptionContent }}</p>
+    </mat-card-content>
+    <mat-card-footer>
+      <hr class="footer-line" />
+      <div class="footer-content">Footer text</div>
+    </mat-card-footer>
+  </mat-card>
+</div>

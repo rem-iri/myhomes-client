@@ -1,19 +1,26 @@
 <div class="profile-card">
   <div class="profile-header">
     <h2 class="profile-title">My Profile</h2>
-    <button class="edit-button" mat-icon-button matTooltip="Edit" color="accent" aria-label="Edit">
+    <button
+      class="edit-button"
+      mat-icon-button
+      matTooltip="Edit"
+      color="accent"
+      aria-label="Edit"
+      (click)="startEditing()"
+    >
       <mat-icon>edit</mat-icon>
     </button>
   </div>
 
-  <form class="profile-form">
+  <form class="profile-form" [formGroup]="profileForm">
     <div class="profile-picture">
       <div class="profile-picture-preview">
-        <img id="profile-picture-preview-img" [src]="profilePictureUrl" alt="">
+        <img id="profile-picture-preview-img" [src]="profilePicture" alt="">
       </div>
     </div>
     <div class="profile-picture-input-container">
-      <button mat-flat-button color="accent" (click)="openProfilePictureInput()">
+      <button mat-flat-button color="accent" (click)="openProfilePictureInput()" [disabled]="!isEditing">
         <mat-icon>photo_camera</mat-icon>
         Choose File
       </button>
@@ -22,38 +29,45 @@
     </div>
     <div class="flex justify-center align-center">
       <div class="xl:w-1/2">
-
         <mat-form-field class="example-full-width">
-          <mat-label>Company Name</mat-label>
-          <input matInput [(ngModel)]="companyName" name="companyName">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" >
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <mat-label>Email</mat-label>
-          <input matInput [(ngModel)]="email" name="email">
+          <mat-label>Company Name</mat-label>
+          <input matInput formControlName="company">
+          <mat-error *ngIf="profileForm.get('company')?.invalid && profileForm.get('company')?.touched">
+            Company name is required.
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
           <mat-label>First Name</mat-label>
-          <input matInput [(ngModel)]="firstName" name="firstName">
+          <input matInput formControlName="firstName">
+          <mat-error *ngIf="profileForm.get('firstName')?.invalid && profileForm.get('firstName')?.touched">
+            First name is required.
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
           <mat-label>Last Name</mat-label>
-          <input matInput [(ngModel)]="lastName" name="lastName">
+          <input matInput formControlName="lastName">
+          <mat-error *ngIf="profileForm.get('lastName')?.invalid && profileForm.get('lastName')?.touched">
+            Last name is required.
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
           <mat-label>About</mat-label>
-          <textarea matInput [(ngModel)]="about" name="about" placeholder="Short description of yourself"
-            maxlength="300"></textarea>
+          <textarea matInput formControlName="about" placeholder="Short description of yourself"
+            maxlength="300" [disabled]="!isEditing" (input)="updateCharacterCount()"></textarea>
           <div class="character-count">
-            <span id="character-count">300</span> characters remaining
+            <span id="character-count">{{ 300 - (profileForm.get('about')?.value?.length ?? 0) }}</span> characters remaining
           </div>
         </mat-form-field>
-
         <div class="update-button">
-          <button mat-fab extended color="accent">
+          <button mat-fab extended color="accent" (click)="updateProfile()"  [disabled]="!isEditing">
             <mat-icon>edit</mat-icon>
             Update Profile
           </button>

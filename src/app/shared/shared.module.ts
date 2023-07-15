@@ -31,6 +31,7 @@ import { BuyerHeaderComponent } from './components/buyer-header/buyer-header.com
 import { CarouselModule } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
 
+
 const commonModules = [
   HttpClientModule,
   MatToolbarModule,

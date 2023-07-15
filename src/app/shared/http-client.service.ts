@@ -8,7 +8,7 @@ export class HttpClientService {
   private readonly API_HOST = environment.API_HOST;
   private readonly COURSES_ENDPOINT: string = `${this.API_HOST}/photos`;
 
-  constructor(private http: HttpClient,private authStateService:AuthStateService) {}
+  constructor(private http: HttpClient, private authStateService: AuthStateService) {}
 
   getCourses(): Promise<any> {
     let promise = new Promise((resolve, reject) => {
@@ -76,6 +76,97 @@ export class HttpClientService {
 
     return promise;
   }
+
+  getSellerProfile(id: string): Promise<any> {
+    const url = `http://localhost:5556/api/auth/seller-profile/${id}`;
+    let promise = new Promise((resolve, reject) => {
+      this.http
+        .get<any>(url)
+        .toPromise()
+        .then(
+          (res) => {
+            resolve(res);
+          },
+          (error) => {
+            reject(error);
+          }
+        );
+    });
+  
+    return promise;
+  }
+  
+  updateSellerProfile(id: string, updatedUser: any): Promise<any> {
+    const url = `http://localhost:5556/api/auth/seller-profile/${id}`;
+    let promise = new Promise((resolve, reject) => {
+      this.http
+        .put<any>(url, updatedUser)
+        .toPromise()
+        .then(
+          (res) => {
+            resolve(res);
+          },
+          (error) => {
+            reject(error);
+          }
+        );
+    });
+  
+    return promise;
+  }
+  getProfilePicture(id: string): Promise<any> {
+    const url = `http://localhost:5556/api/auth/seller-profile/${id}/profile-picture`;
+  
+    let promise = new Promise((resolve, reject) => {
+      this.http
+        .get(url, { responseType: 'arraybuffer' })
+        .toPromise()
+        .then(
+          (res: ArrayBuffer | undefined) => {
+            if (res) {
+              const base64 = btoa(
+                Array.from(new Uint8Array(res))
+                  .map((byte) => String.fromCharCode(byte))
+                  .join('')
+              );
+              const imageUrl = `data:image/jpeg;base64,${base64}`;
+              resolve(imageUrl);
+            } else {
+              reject("Profile picture not found.");
+            }
+          },
+          (error) => {
+            reject(error);
+          }
+        );
+    });
+  
+    return promise;
+  }
+  
+  updateSellerProfilePicture(id: string, file: File): Promise<any> {
+    const url = `http://localhost:5556/api/auth/seller-profile/${id}/profile-picture`;
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    let promise = new Promise((resolve, reject) => {
+      this.http
+        .put<any>(url, formData)
+        .toPromise()
+        .then(
+          (res) => {
+            resolve(res);
+          },
+          (error) => {
+            reject(error);
+          }
+        );
+    });
+
+    return promise;
+  }
+
   getAllProperties(): Promise<any> {
     if(!this.authStateService.hasCurrentUser()) {
       throw new Error("No user");
@@ -106,6 +197,8 @@ export class HttpClientService {
     return promise;
   }
 
+  
+
   getPropertyById(id: string): Promise<any> {
     if (!this.authStateService.hasCurrentUser()) {
       throw new Error("No user");
@@ -132,6 +225,8 @@ export class HttpClientService {
         }
       );
   }
+
+
   getUserById(userId: string): Promise<any> {
     if (!this.authStateService.hasCurrentUser()) {
       throw new Error("No user");
@@ -192,6 +287,102 @@ export class HttpClientService {
   
     return promise;
   }
-  
-  
+
+  createProperty(property: any): Promise<any> {
+    if(!this.authStateService.hasCurrentUser()) {
+      throw new Error("No user");
+    }
+    
+    let authenticationHeaders = {
+      headers: new HttpHeaders()
+        .set('Authorization',  `Bearer ${(this.authStateService.getCurrentUser().token)}`)
+        .set('Content-Type', 'application/json')
+    }
+
+    let promise = new Promise((resolve, reject) => {
+      this.http
+        .post<any[]>(`http://localhost:5556/api/properties`, 
+        property,
+        authenticationHeaders,
+        )
+        .toPromise()
+        .then(
+          (res) => {
+            console.log("createProperty success: ", res);
+            resolve(res);
+          },
+          (msg) => {
+            console.log("Caught in createProperty error: ", msg);
+            reject(msg);
+          }
+        );
+    });
+
+    return promise;
+  }
+
+  deleteProperty(id: string): Promise<any> {
+    if(!this.authStateService.hasCurrentUser()) {
+      throw new Error("No user");
+    }
+    
+    let authenticationHeaders = {
+      headers: new HttpHeaders()
+        .set('Authorization',  `Bearer ${(this.authStateService.getCurrentUser().token)}`)
+        .set('Content-Type', 'application/json')
+    }
+
+    let promise = new Promise((resolve, reject) => {
+      this.http
+        .delete<any[]>(`http://localhost:5556/api/properties/${id}`, 
+        authenticationHeaders,
+        )
+        .toPromise()
+        .then(
+          (res) => {
+            console.log("deleteProperty success: ", res);
+            resolve(res);
+          },
+          (msg) => {
+            console.log("Caught in deleteProperty error: ", msg);
+            reject(msg);
+          }
+        );
+    });
+
+    return promise;
+  }
+
+  updatePropertySold(id: string): Promise<any> {
+    if(!this.authStateService.hasCurrentUser()) {
+      throw new Error("No user");
+    }
+    
+    let authenticationHeaders = {
+      headers: new HttpHeaders()
+        .set('Authorization',  `Bearer ${(this.authStateService.getCurrentUser().token)}`)
+        .set('Content-Type', 'application/json')
+    }
+
+    let promise = new Promise((resolve, reject) => {
+      this.http
+        .put<any[]>(`http://localhost:5556/api/properties/updateSold/${id}`,
+        null,
+        authenticationHeaders,
+        )
+        .toPromise()
+        .then(
+          (res) => {
+            console.log("deleteProperty success: ", res);
+            resolve(res);
+          },
+          (msg) => {
+            console.log("Caught in deleteProperty error: ", msg);
+            reject(msg);
+          }
+        );
+    });
+
+    return promise;
+  }
 }
