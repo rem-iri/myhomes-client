@@ -1,0 +1,315 @@
+<!-- <div class="pt-52 pb-32 bg-gray-100 text-center">
+    <div class="container">
+      <h3>Contact Us</h3>
+      <nav class="breadcrumb flex justify-center items-center">
+        <a class="px-1 mr-3 text-gray-500 hover:text-black" [routerLink]="'/'">Home</a>
+        <a class="px-1" href="javascript:void(0)" class="text-accent">Contact</a>
+      </nav>
+    </div>
+  </div> -->
+  <div class="px-5 pt-20">
+    <div class="container">
+      <div class="">
+        <div class="contact__form col-span-12 lg:col-span-7">
+          <div class="mb-8">
+            <h3>Create a property listing</h3>
+            <p>Please enter the necessary information about your property</p>
+          </div>
+          
+          
+          <form [formGroup]="propertyForm" (ngSubmit)="onSubmit()" novalidate >
+            
+
+            <!-- <div class="flex flex-wrap sm:flex-nowrap sm:space-x-5 mt-3">
+              <input type="text" placeholder="City" class="border border-gray-200 p-2 px-4 w-full sm:w-1/2 rounded-sm" />
+              <input type="text" placeholder="Barangay" class="border border-gray-200 p-2 px-4 w-full sm:w-1/2 rounded-sm mt-3 sm:mt-0" />
+            </div> -->
+
+
+            <!-- <div class="flex flex-wrap sm:flex-nowrap sm:space-x-5 mt-3">
+              <div class="w-full sm:w-1/2 rounded-sm">
+                <label class="block text-gray-700 text-sm font-semibold mb-2" for="email">Email<span class="text-red-500">*</span></label>
+                <input type="text" placeholder="Your Name" class="border border-gray-200 w-full p-2 px-4" />
+              </div>
+              <div class="w-full sm:w-1/2 rounded-sm mt-3 sm:mt-0">
+                <label class="block text-gray-700 text-sm font-semibold mb-2" for="email">Email<span class="text-red-500">*</span></label>
+                <input
+                type="number"
+                placeholder="Your Number"
+                class="border border-gray-200 w-full p-2 px-4"
+              />
+              </div>
+              
+            </div> -->
+
+            <div class="mt-3">
+              <label class="block text-gray-700 text-sm font-semibold mb-2">Listing Title<span class="text-red-500">*</span></label>
+              <input
+                formControlName="listingTitle"
+                type="text" 
+                placeholder="Listing Title" 
+                class="border border-gray-200 p-2 px-4 w-full rounded-md"
+                [ngClass]="{ 'border-red-500': submitted && listingTitle.invalid }"
+              />
+            </div>
+
+            <div class="mt-3">
+              <label class="block text-gray-700 text-sm font-semibold mb-2">Property Type<span class="text-red-500">*</span></label>
+              <select 
+                formControlName="propertyType"
+                class="mt-1 block w-full py-2 px-3 border bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                [ngClass]="{ 
+                  'focus:ring-red-500 focus:border-red-500 border-red-500': submitted && propertyType.invalid,
+                  'border-gray-300': !(submitted && propertyType.invalid)
+                }"
+                >
+                <option value="">--</option>
+                <option value="House">House</option>
+                <option value="Apartment">Apartment</option>
+                <option value="Condominum">Condominum</option>
+                <option value="Land">Land</option>
+              </select>
+            </div>
+
+            <div class="mt-3">
+              <label class="block text-gray-700 text-sm font-semibold mb-2">Description<span class="text-red-500">*</span></label>
+              <textarea
+                formControlName="description"
+                cols="10"
+                rows="3"
+                placeholder="Tell us about the property"
+                class="border border-gray-200 p-2 px-4 w-full rounded-md"
+                [ngClass]="{ 'border-red-500': submitted && description.invalid }"
+              >
+              </textarea>
+            </div>
+
+            <div class="flex flex-wrap sm:flex-nowrap sm:space-x-5 mt-3">
+              <div class="w-full sm:w-1/2 rounded-sm">
+                <label class="block text-gray-700 text-sm font-semibold mb-2">Furnishing<span class="text-red-500">*</span></label>
+                <select 
+                  formControlName="furnishing"
+                  class="mt-1 block w-full py-2 px-3 border bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  [ngClass]="{ 
+                    'focus:ring-red-500 focus:border-red-500 border-red-500': submitted && furnishing.invalid,
+                    'border-gray-300': !(submitted && furnishing.invalid)
+                  }"
+                  >
+                  <option value="">--</option>
+                  <option value="Fully-furnished">Fully-furnished</option>
+                  <option value="Semi-furnished">Semi-furnished</option>
+                </select>
+              </div>
+              <div class="w-full sm:w-1/2 rounded-sm mt-3 sm:mt-0">
+                <label class="block text-gray-700 text-sm font-semibold mb-2">Sale Type<span class="text-red-500">*</span></label>
+                <select 
+                  formControlName="saleType"
+                  class="mt-1 block w-full py-2 px-3 border bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  [ngClass]="{ 
+                    'focus:ring-red-500 focus:border-red-500 border-red-500': submitted && saleType.invalid,
+                    'border-gray-300': !(submitted && saleType.invalid)
+                  }"
+                  >
+                  <option value="">--</option>
+                  <option value="For Sale">For Sale</option>
+                  <option value="For Rent">For Rent</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap sm:flex-nowrap sm:space-x-5 mt-3">
+              <div class="w-full sm:w-1/2 rounded-sm">
+                <label class="block text-gray-700 text-sm font-semibold mb-2">Baths<span class="text-red-500">*</span></label>
+                <input 
+                  formControlName="bath" 
+                  type="number" 
+                  placeholder="Number of Bathrooms"
+                  class="border border-gray-200 p-2 px-4 w-full rounded-md sm:w-1/2 rounded-sm mt-3 sm:mt-0"
+                  [ngClass]="{ 'border-red-500': submitted && bath.invalid }" 
+                  min="0"
+                  />
+              </div>
+              <div class="w-full sm:w-1/2 rounded-sm mt-3 sm:mt-0">
+                <label class="block text-gray-700 text-sm font-semibold mb-2">Bedrooms<span class="text-red-500">*</span></label>
+                <input 
+                  formControlName="bedroom" 
+                  type="number" 
+                  placeholder="Number of Bedrooms"
+                  class="border border-gray-200 p-2 px-4 w-full rounded-md sm:w-1/2 rounded-sm mt-3 sm:mt-0"
+                  [ngClass]="{ 'border-red-500': submitted && bedroom.invalid }" 
+                  min="0"
+                  />
+              </div>
+            </div>
+            
+            <div class="relative mt-3">
+              <label class="block text-gray-700 text-sm font-semibold mb-2">Price<span class="text-red-500">*</span></label>
+              <div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+                <span>PHP</span>
+              </div>
+              <input
+                formControlName="price"
+                type="number"
+                placeholder="Price"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 border border-gray-200 p-2 px-4 w-full rounded-md sm:w-1/2 rounded-md mt-3 sm:mt-0 text-right"
+                [ngClass]="{ 'border-red-500': submitted && price.invalid }"
+                min="0"
+              />
+              {{ price?.value | currency:'PHP' }}
+            </div>
+
+            <div class="mt-3">
+
+              <label class="block text-gray-700 text-sm font-semibold mb-2">Area<span class="text-red-500">*</span></label>
+              <input
+                formControlName="area"
+                type="number"
+                placeholder="Area"
+                class="border border-gray-200 p-2 px-4 w-full rounded-md sm:w-1/2 rounded-sm mt-3 sm:mt-0"
+                [ngClass]="{ 'border-red-500': submitted && area.invalid }"
+                min="0"
+              />
+            </div>
+
+            <p class="mt-5">Address</p>
+
+            <div class="mt-3">
+              <label class="block text-gray-700 text-sm font-semibold mb-2">House Number<span class="text-red-500">*</span></label>
+              <input
+                formControlName="houseNumber"
+                type="text" 
+                placeholder="House Number" 
+                class="border border-gray-200 p-2 px-4 w-full rounded-md"
+                [ngClass]="{ 'border-red-500': submitted && houseNumber.invalid }"
+              />
+            </div>
+
+            <div class="mt-3">
+              <label class="block text-gray-700 text-sm font-semibold mb-2">Street<span class="text-red-500">*</span></label>
+              <input
+                formControlName="street"
+                type="text" 
+                placeholder="Street" 
+                class="border border-gray-200 p-2 px-4 w-full rounded-md"
+                [ngClass]="{ 'border-red-500': submitted && street.invalid }"
+              />
+            </div>
+
+            <div class="mt-3">
+            <label class="block text-gray-700 text-sm font-semibold mb-2">Village/Barangay<span class="text-red-500">*</span></label>
+            <input
+              formControlName="village"
+              type="text" 
+              placeholder="Village/Barangay" 
+              class="border border-gray-200 p-2 px-4 w-full rounded-md"
+              [ngClass]="{ 'border-red-500': submitted && village.invalid }"
+            />
+          </div>
+
+            <div class="mt-3">
+            <label class="block text-gray-700 text-sm font-semibold mb-2">Region<span class="text-red-500">*</span></label>
+            <select 
+              formControlName="region" 
+              class="mt-1 block w-full py-2 px-3 border bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+              [ngClass]="{ 
+                'focus:ring-red-500 focus:border-red-500 border-red-500': submitted && region.invalid,
+                'border-gray-300': !(submitted && region.invalid)
+               }"              
+              >
+              <option value="">--</option>
+              <option *ngFor="let r of regions" [value]="r?.regionName">
+                  {{r?.regionName}}
+              </option>
+            </select>
+          </div>
+
+            <div class="mt-3">
+            <label class="block text-gray-700 text-sm font-semibold mb-2">Province<span class="text-red-500">*</span></label>
+            <select 
+              formControlName="province"
+              class="mt-1 block w-full py-2 px-3 border bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+              [ngClass]="{ 
+                'focus:ring-red-500 focus:border-red-500 border-red-500': submitted && province.invalid,
+                'border-gray-300': !(submitted && city.invalid)
+               }"
+              >
+              <option value="">--</option>
+              <option *ngFor="let p of getChildOnPropertyMatch(regions, 'regionName', region.value, 'provinces')" [value]="p?.name">
+                  {{p?.name}}
+              </option>
+            </select>
+            </div>
+
+            <div class="mt-3">
+            <label class="block text-gray-700 text-sm font-semibold mb-2">City<span class="text-red-500">*</span></label>
+            <select 
+              formControlName="city"
+              class="mt-1 block w-full py-2 px-3 border bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+              [ngClass]="{ 
+                'focus:ring-red-500 focus:border-red-500 border-red-500': submitted && city.invalid,
+                'border-gray-300': !(submitted && city.invalid)
+               }"
+              >
+              <option value="">--</option>
+              <option *ngFor="let c of getChildOnPropertyMatch(getProvinceByName(regions, region?.value), 'name', province.value, 'municipalities')" [value]="c?.name">
+                  {{c?.name}}
+              </option>
+            </select>
+            </div>
+
+
+            <!-- ========================= -->
+
+            
+            
+
+
+            <button type="submit" class="px-5 py-2 bg-accent text-white mt-5 rounded font-medium">Create</button>
+          </form>
+
+          <label class="block text-gray-700 text-sm font-semibold mb-2 mt-5">Property Images<span class="text-red-500">*</span></label>
+          <app-upload-images (imagesUpdated)="updateImages($event)"></app-upload-images>
+        </div>
+
+
+        <!-- <div fxLayoutWrap fxLayout="row" fxLayoutAlign="center">
+          <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.sm="60" class="flex-p">
+        
+                <form [formGroup]="formData" (ngSubmit)="onImageSubmit()">
+                  
+                  
+                  <input type="file"
+                        id="file[0]"
+                        (change)="handleFileInput1($event)">
+                  <input type="file"
+                        id="file[1]"
+                        (change)="handleFileInput2($event)">
+                  <div fxLayout="row" fxLayoutAlign="center">
+                    <button mat-raised-button color="primary" type="submit">Upload Files</button>
+                  </div>
+                </form>
+          </div>
+        </div> -->
+        
+        <!-- <div fxLayoutWrap fxLayout="row" fxLayoutAlign="center">
+          <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.sm="60" class="flex-p">
+        
+                <form [formGroup]="formData" (ngSubmit)="onImageSubmit()">
+                  <input type="file"
+                        id="file[0]"
+                        (change)="handleFileInput1($event)">
+                  <div fxLayout="row" fxLayoutAlign="center">
+                    <button mat-raised-button color="primary" type="submit">Upload Files</button>
+                  </div>
+                </form>
+          </div>
+        </div> -->
+
+        
+        <div class="col-span-12 mt-5">
+          <!-- <ll-google-location-map></ll-google-location-map> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,1 +1,97 @@
-<p>properties works!</p>
+
+<div class="px-5">
+    
+    <div class="flex justify-between py-5 mt-5">
+        <h3>My Properties</h3>
+        <a [routerLink]="['../create-property']"  mat-flat-button  color="accent">
+            <mat-icon>house</mat-icon>
+            Add Property
+        </a>
+    </div>
+    
+    
+    <div class="" *ngIf="properties.length">
+        <div class="table-inside">
+            <table class="order-table table-fixed ltMd:responsive">
+                <thead>
+                    <tr class="border text-left">
+                        <th class="w-96">
+                            <span class="text-gray-800"></span>
+                        </th>
+                        <th>
+                            <span class="text-gray-800">Title</span>
+                        </th>
+                        <th>
+                            <span class="text-gray-800">Price</span>
+					</th>
+	
+					<th>
+                        <span class="text-gray-800">Created</span>
+					</th>
+                    
+					<th>
+                        <span class="text-gray-800">Status</span>
+					</th>
+                    
+					<th class="text-right">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let property of properties" class="border">
+                    <td class="w-96 p-10">
+                        
+                        <p class="" *ngIf="property?.images?.length === 0">No image to show</p>
+                        <div class="rounded-md h-64 w-80 overflow-hidden" *ngIf="property?.images?.[0]?.imageUrl">
+                            <img class="h-full w-full object-cover" [src]="property?.images?.[0]?.imageUrl" alt="img">
+                        </div>
+
+						<!-- <a class="text-primary" href="/">{{property?.id}}</a> -->
+					</td>
+					<td>
+                        {{property?.listingTitle | titlecase }}
+					</td>
+					<td>
+                        <span>{{property?.price | currency:'PHP'}}</span>
+					</td>
+					<td>
+                        <span>{{property?.dateCreated | date}}</span>
+					</td>
+					<td>
+                        <div [ngClass]="{
+                            'bg-yellow-500 text-yellow-900': property?.sold === false,
+							'bg-green-400 text-yellow-800': property?.sold === true
+                        }" 
+							class="text-[12px] bg-opacity-20 rounded-full px-3 inline-block font-bold py-[3px]"
+						>
+							{{ property?.sold ? "Sold" : "Up"}}
+						</div>
+					</td>
+					<td class="text-right">
+                        <button class="action_icon__btn" mat-icon-button [matMenuTriggerFor]="menu">
+                            <mat-icon class="text-center">more_vert</mat-icon>
+						</button>
+						<mat-menu #menu="matMenu" xposition="before">
+                            <button mat-menu-item>
+                                <mat-icon>message</mat-icon>
+								<span>View Inquiries</span>
+							</button>
+                            <button mat-menu-item >
+                                <mat-icon>edit</mat-icon>
+								<span>Edit</span>
+							</button>
+                            <button mat-menu-item (click)="updatePropertySold(property.id)" *ngIf="!property.sold">
+                                <mat-icon>attach_money</mat-icon>
+								<span>Mark as Sold</span>
+							</button>
+							<button mat-menu-item (click)="deleteProperty(property.id)">
+                                <mat-icon>delete</mat-icon>
+								<span>Delete</span>
+							</button>
+						</mat-menu>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</div>
