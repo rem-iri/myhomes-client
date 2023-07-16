@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/model/user';
 import { HttpClientService } from 'src/app/shared/http-client.service';
-import * as L from 'leaflet';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AuthStateService } from 'src/app/shared/auth-state.service';
 
@@ -44,7 +43,6 @@ export class PropertiesDetailComponent implements OnInit {
   private currentImageIndex: number = 0;
   public searchQuery: string = '';
   public inquiryFormVisible: boolean = false;
-  private map: L.Map;
   public inquiry: { buyer_id: string, phoneNumber: string; email: string; message: string } = {
     buyer_id: '',
     phoneNumber: '',
