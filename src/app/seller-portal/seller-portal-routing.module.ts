@@ -4,6 +4,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { PropertiesComponent } from './properties/properties.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CreatePropertyComponent } from './create-property/create-property.component';
+import { UpdatePropertyComponent } from './update-property/update-property.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent
+  },
+  {
+    path: 'update-property/:id',
+    component: UpdatePropertyComponent
   }
 ];
 

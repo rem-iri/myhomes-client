@@ -7,6 +7,7 @@ module.exports = {
   mode: 'jit',
   important: ':root', // or true
   prefix: '',
+  important: true,
   purge: {
     // enabled: true,
     content: ['./src/**/*.{html,ts}']

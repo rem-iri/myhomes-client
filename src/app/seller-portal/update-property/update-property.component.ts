@@ -8,11 +8,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-create-property',
-  templateUrl: './create-property.component.html',
-  styleUrls: ['./create-property.component.scss']
+  selector: 'app-update-property',
+  templateUrl: './update-property.component.html',
+  styleUrls: ['./update-property.component.scss']
 })
-export class CreatePropertyComponent implements OnInit{
+export class UpdatePropertyComponent {
   constructor(
     private authStateService: AuthStateService,
     private httpClient: HttpClientService,
@@ -27,10 +27,11 @@ export class CreatePropertyComponent implements OnInit{
   submitted = false;
   regions: any = [];
 
-  
+  routePropertyId = this.route.snapshot.paramMap.get('id')
+
   user_id = new FormControl("");
   listingTitle = new FormControl("", [Validators.required]);
-  propertyType = new FormControl("Condominium", [Validators.required]);
+  propertyType = new FormControl("", [Validators.required]);
   description = new FormControl("", [Validators.required]);
   furnishing = new FormControl("", [Validators.required]);
   saleType = new FormControl("", [Validators.required]);
@@ -76,11 +77,40 @@ export class CreatePropertyComponent implements OnInit{
     console.log("CURRENT USER", this.authStateService.getCurrentUser())
     this.user_id.setValue(this.authStateService.getCurrentUser()?.id);
 
+    this.getCurrentProperty();
+
     // ===========
 
     // this.formData = this.formBuilder.group({
     //   files   : []
     // });
+  }
+
+  async getCurrentProperty() {
+
+    if(this.routePropertyId == null) {
+      return;
+    }
+    let currentProperty = await this.httpClient.getPropertyById(this.routePropertyId);
+
+    this.user_id.setValue(currentProperty.user_id);
+    this.listingTitle.setValue(currentProperty.listingTitle);
+    this.propertyType.setValue(currentProperty.propertyType);
+    this.description.setValue(currentProperty.description);
+    this.furnishing.setValue(currentProperty.furnishing);
+    this.saleType.setValue(currentProperty.saleType);
+    this.bath.setValue(currentProperty.bath);
+    this.bedroom.setValue(currentProperty.bedroom);
+    this.price.setValue(currentProperty.price);
+    this.area.setValue(currentProperty.area);
+    this.houseNumber.setValue(currentProperty.houseNumber);
+    this.street.setValue(currentProperty.street);
+    this.village.setValue(currentProperty.village);
+    this.city.setValue(currentProperty.city);
+    this.province.setValue(currentProperty.province);
+    this.region.setValue(currentProperty.region);
+    this.isSold.setValue(currentProperty.sold);
+    this.images.setValue(currentProperty.images);
   }
 
   getChildOnPropertyMatch(regionsArr: any, key:string , value: string | null, childToReturn: any) {
@@ -132,11 +162,15 @@ export class CreatePropertyComponent implements OnInit{
       return;
     }
 
-    await this.httpClient.createProperty(this.propertyForm.value);
+    if (!this.routePropertyId) {
+      return;
+    }
+
+    await this.httpClient.updateProperty(this.routePropertyId, this.propertyForm.value);
 
     console.log(JSON.stringify(this.propertyForm.value, null, 4));
     this.router.navigateByUrl("/seller/properties");
-    this.openSnackBar("Successfully added your property.", undefined);
+    this.openSnackBar("Successfully updated your property.", undefined);
   }
 
 
@@ -148,54 +182,4 @@ export class CreatePropertyComponent implements OnInit{
   provinceChange() {
     this.city.setValue("");
   }
-  
-
-
-  // ===========================================================
-
- 
- 
-  // formData: FormGroup;
-
-  // filesToUpload: File[] = [];
-  // fileToUpload1: File;
-  // fileToUpload2: File;
- 
-  // handleFileInput(event: any) {
-  //   this.fileToUpload1 = <File>event.target.files[0];
-  // }
- 
-  // handleFileInput1(event: any) {
-  //   this.fileToUpload1 = <File>event.target.files[0];
-  // }
- 
-  // handleFileInput2(event: any) {
-  //   this.fileToUpload2 = <File>event.target.files[0];
-  // }
- 
-  // onImageSubmit():void {
- 
-  //   const multipartFormData: FormData = new FormData();
-
-  //   this.filesToUpload.forEach(e => {
-  //     multipartFormData.append('document', e, e.name);
-  //   })
-
-    
-  //   multipartFormData.append('document', this.fileToUpload1, this.fileToUpload1.name);
-  //   multipartFormData.append('document', this.fileToUpload2, this.fileToUpload2.name);
- 
-  //   let url = 'http://localhost:5556/api/upload/documents';
- 
-  //   this.ngHttpClient
-  //     .post(url, multipartFormData, {observe: 'response'}).subscribe(
-  //     resp => {
-  //       console.log(resp.body);
-  //     },
-  //     err => {
-  //       console.log(err);
- 
-  //     });
-  // }
-
 }
