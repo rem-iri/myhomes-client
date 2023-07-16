@@ -15,7 +15,7 @@ import { CreatePropertyComponent } from './create-property/create-property.compo
 import { UploadImagesComponent } from './upload-images/upload-images.component';
 
 @NgModule({
-  declarations: [PropertiesComponent, ProfileComponent, CreatePropertyComponent, UploadImagesComponent],
+  declarations: [ ProfileComponent,PropertiesComponent,CreatePropertyComponent, UploadImagesComponent],
   imports: [
     CommonModule,
     SharedModule,
@@ -26,6 +26,6 @@ import { UploadImagesComponent } from './upload-images/upload-images.component';
     ReactiveFormsModule,
     MatSnackBarModule
   ],
-  exports: [PropertiesComponent, ProfileComponent, CreatePropertyComponent, UploadImagesComponent]
+  exports: [ProfileComponent,PropertiesComponent, CreatePropertyComponent, UploadImagesComponent]
 })
 export class SellerPortalModule {}

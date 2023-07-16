@@ -32,6 +32,7 @@ import { CarouselModule } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
 
 
+
 const commonModules = [
   HttpClientModule,
   MatToolbarModule,
@@ -56,7 +57,8 @@ const commonModules = [
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, FeatureComponent, BaseLayoutComponent, LoaderComponent, SidenavComponent, GuestLayoutComponent, HeaderGuestComponent, SellerLayoutComponent, HeaderSellerComponent, BuyerLayoutComponent, BuyerHeaderComponent],
-  imports: [CommonModule, RouterModule, ...commonModules],
-  exports: [HeaderComponent, FooterComponent, BaseLayoutComponent, FeatureComponent, LoaderComponent, SidenavComponent, GuestLayoutComponent, HeaderGuestComponent, SellerLayoutComponent, HeaderSellerComponent,BuyerHeaderComponent,BuyerLayoutComponent, ...commonModules]
+  imports: [CommonModule, RouterModule,...commonModules],
+  exports: [HeaderComponent, FooterComponent, BaseLayoutComponent, FeatureComponent, LoaderComponent, SidenavComponent, GuestLayoutComponent, HeaderGuestComponent, SellerLayoutComponent, HeaderSellerComponent, BuyerHeaderComponent, BuyerLayoutComponent, ...commonModules],
+ 
 })
 export class SharedModule {}
