@@ -14,8 +14,8 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-8">
+<div class="">
+  <div class="">
     <label class="btn btn-default p-0">
       <input
         type="file"
@@ -26,28 +26,29 @@
     </label>
   </div>
 
-  <div class="col-4">
+  <div class="">
     <button
       class="btn btn-success btn-sm"
       [disabled]="!selectedFiles"
       (click)="uploadFiles()"
+      [ngClass]="{'disabled': !selectedFiles}"
     >
       Upload
     </button>
   </div>
 </div>
 
-<div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4 m-5">
   <div *ngFor="let preview of previews">
     <img [src]="preview" class="h-auto max-w-full rounded-lg" />
   </div>
 </div>
 
-<div *ngIf="message.length" class="alert alert-secondary my-3" role="alert">
+<!-- <div *ngIf="message.length" class="alert alert-secondary my-3" role="alert">
   <ul *ngFor="let msg of message; let i = index">
     <li>{{ msg }}</li>
   </ul>
-</div>
+</div> -->
 
 <!-- <div class="card mt-3">
   <div class="card-header">List of Images</div>

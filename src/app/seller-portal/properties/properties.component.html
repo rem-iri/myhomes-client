@@ -9,7 +9,7 @@
         </a>
     </div>
     
-    
+    <p *ngIf="!properties.length" class="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">You haven't created any property listings yet, go ahead and <a class="text-blue-600 dark:text-blue-500 hover:underline" [routerLink]="['../create-property']" >add a property</a>.</p>
     <div class="" *ngIf="properties.length">
         <div class="table-inside">
             <table class="order-table table-fixed ltMd:responsive">
@@ -41,14 +41,38 @@
                     <td class="w-96 p-10">
                         
                         <p class="" *ngIf="property?.images?.length === 0">No image to show</p>
-                        <div class="rounded-md h-64 w-80 overflow-hidden" *ngIf="property?.images?.[0]?.imageUrl">
+						<div class="rounded-md h-64 w-80 overflow-hidden" *ngIf="property?.images?.length >= 1">
+						<c-carousel [interval]="0">
+							<c-carousel-indicators></c-carousel-indicators>
+							<c-carousel-inner>
+							  <c-carousel-item *ngFor="let image of property?.images">
+								<div class="rounded-md h-64 w-80 overflow-hidden">
+									<img
+									class="h-full w-full object-cover"
+									loading="lazy"
+									[src]="image?.imageUrl"
+									/>
+								</div>
+								
+								<c-carousel-caption class="d-none d-md-block">
+								  <!-- <h3>{{slide.title}}</h3>
+								  <p>{{slide.subtitle}}</p> -->
+								</c-carousel-caption>
+							  </c-carousel-item>
+							</c-carousel-inner>
+							<c-carousel-control *ngIf="property?.images?.length >= 2" [routerLink] caption=" " direction="prev"></c-carousel-control>
+							<c-carousel-control *ngIf="property?.images?.length >= 2" [routerLink] caption=" " direction="next"></c-carousel-control>
+						  </c-carousel>
+						</div>
+                        <!-- <div class="rounded-md h-64 w-80 overflow-hidden" *ngIf="property?.images?.[0]?.imageUrl">
                             <img class="h-full w-full object-cover" [src]="property?.images?.[0]?.imageUrl" alt="img">
-                        </div>
+                        </div> -->
 
 						<!-- <a class="text-primary" href="/">{{property?.id}}</a> -->
 					</td>
 					<td>
                         {{property?.listingTitle | titlecase }}
+						
 					</td>
 					<td>
                         <span>{{property?.price | currency:'PHP'}}</span>
@@ -75,7 +99,7 @@
                                 <mat-icon>message</mat-icon>
 								<span>View Inquiries</span>
 							</button>
-                            <button mat-menu-item >
+                            <button mat-menu-item [routerLink]="['../update-property/' + property?.id]">
                                 <mat-icon>edit</mat-icon>
 								<span>Edit</span>
 							</button>

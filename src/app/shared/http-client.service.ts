@@ -167,7 +167,7 @@ export class HttpClientService {
     return promise;
   }
 
-  getAllProperties(): Promise<any> {
+  getAllProperties(userId: string | null = null): Promise<any> {
     if(!this.authStateService.hasCurrentUser()) {
       throw new Error("No user");
     }
@@ -180,7 +180,7 @@ export class HttpClientService {
 
     let promise = new Promise((resolve, reject) => {
       this.http
-        .get<any[]>(`http://localhost:5556/api/properties`, authenticationHeaders)
+        .get<any[]>(`http://localhost:5556/api/properties?${userId ? "userId=" + userId : ""}`, authenticationHeaders)
         .toPromise()
         .then(
           (res) => {
@@ -313,6 +313,39 @@ export class HttpClientService {
           },
           (msg) => {
             console.log("Caught in createProperty error: ", msg);
+            reject(msg);
+          }
+        );
+    });
+
+    return promise;
+  }
+
+  updateProperty(id: string, property: any): Promise<any> {
+    if(!this.authStateService.hasCurrentUser()) {
+      throw new Error("No user");
+    }
+    
+    let authenticationHeaders = {
+      headers: new HttpHeaders()
+        .set('Authorization',  `Bearer ${(this.authStateService.getCurrentUser().token)}`)
+        .set('Content-Type', 'application/json')
+    }
+
+    let promise = new Promise((resolve, reject) => {
+      this.http
+        .put<any[]>(`http://localhost:5556/api/properties/${id}`, 
+        property,
+        authenticationHeaders,
+        )
+        .toPromise()
+        .then(
+          (res) => {
+            console.log("updateProperty success: ", res);
+            resolve(res);
+          },
+          (msg) => {
+            console.log("Caught in updateProperty error: ", msg);
             reject(msg);
           }
         );

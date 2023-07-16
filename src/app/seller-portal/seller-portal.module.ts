@@ -13,9 +13,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatMenuModule } from '@angular/material/menu';
 import { CreatePropertyComponent } from './create-property/create-property.component';
 import { UploadImagesComponent } from './upload-images/upload-images.component';
+import { UpdatePropertyComponent } from './update-property/update-property.component';
 
 @NgModule({
-  declarations: [PropertiesComponent, ProfileComponent, CreatePropertyComponent, UploadImagesComponent],
+  declarations: [PropertiesComponent, ProfileComponent, CreatePropertyComponent, UploadImagesComponent, UpdatePropertyComponent],
   imports: [
     CommonModule,
     SharedModule,
@@ -26,6 +27,6 @@ import { UploadImagesComponent } from './upload-images/upload-images.component';
     ReactiveFormsModule,
     MatSnackBarModule
   ],
-  exports: [PropertiesComponent, ProfileComponent, CreatePropertyComponent, UploadImagesComponent]
+  exports: [PropertiesComponent, ProfileComponent, CreatePropertyComponent, UploadImagesComponent, UpdatePropertyComponent]
 })
 export class SellerPortalModule {}

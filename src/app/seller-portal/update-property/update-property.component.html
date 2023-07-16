@@ -7,12 +7,12 @@
       </nav>
     </div>
   </div> -->
-  <div class="px-5 pt-20 mb-10">
+  <div class="px-5 pt-20">
     <div class="container">
       <div class="">
         <div class="contact__form col-span-12 lg:col-span-7">
           <div class="mb-8">
-            <h3>Create a property listing</h3>
+            <h3>{{listingTitle?.value ?? ''}}</h3>
             <p>Please enter the necessary information about your property</p>
           </div>
           
@@ -270,7 +270,7 @@
             
 
 
-            <button type="submit" class="px-6 py-3.5 text-base font-medium fixed z-100 bottom-10 right-8 px-5 py-2 bg-accent text-white mt-5 rounded font-medium hover:bg-red-600 shadow-xl">Create</button>
+            <button type="submit" class="px-6 py-3.5 text-base font-medium fixed z-100 bottom-10 right-8 px-5 py-2 bg-accent text-white mt-5 rounded font-medium hover:bg-red-600 shadow-xl">Update</button>
           </form>
 
           <label class="block text-gray-700 text-sm font-semibold mb-2 mt-5">Property Images<span class="text-red-500">*</span></label>
