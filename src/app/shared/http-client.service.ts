@@ -95,9 +95,45 @@ export class HttpClientService {
   
     return promise;
   }
+  getBuyerProfile(id: string): Promise<any> {
+    const url = `http://localhost:5556/api/auth/buyer-profile/${id}`;
+    let promise = new Promise((resolve, reject) => {
+      this.http
+        .get<any>(url)
+        .toPromise()
+        .then(
+          (res) => {
+            resolve(res);
+          },
+          (error) => {
+            reject(error);
+          }
+        );
+    });
+  
+    return promise;
+  }
   
   updateSellerProfile(id: string, updatedUser: any): Promise<any> {
     const url = `http://localhost:5556/api/auth/seller-profile/${id}`;
+    let promise = new Promise((resolve, reject) => {
+      this.http
+        .put<any>(url, updatedUser)
+        .toPromise()
+        .then(
+          (res) => {
+            resolve(res);
+          },
+          (error) => {
+            reject(error);
+          }
+        );
+    });
+  
+    return promise;
+  }
+  updateBuyerProfile(id: string, updatedUser: any): Promise<any> {
+    const url = `http://localhost:5556/api/auth/buyer-profile/${id}`;
     let promise = new Promise((resolve, reject) => {
       this.http
         .put<any>(url, updatedUser)
@@ -143,9 +179,60 @@ export class HttpClientService {
   
     return promise;
   }
+  getBuyerProfilePicture(id: string): Promise<any> {
+    const url = `http://localhost:5556/api/auth/buyer-profile/${id}/profile-picture`;
+  
+    let promise = new Promise((resolve, reject) => {
+      this.http
+        .get(url, { responseType: 'arraybuffer' })
+        .toPromise()
+        .then(
+          (res: ArrayBuffer | undefined) => {
+            if (res) {
+              const base64 = btoa(
+                Array.from(new Uint8Array(res))
+                  .map((byte) => String.fromCharCode(byte))
+                  .join('')
+              );
+              const imageUrl = `data:image/jpeg;base64,${base64}`;
+              resolve(imageUrl);
+            } else {
+              reject("Profile picture not found.");
+            }
+          },
+          (error) => {
+            reject(error);
+          }
+        );
+    });
+  
+    return promise;
+  }
   
   updateSellerProfilePicture(id: string, file: File): Promise<any> {
     const url = `http://localhost:5556/api/auth/seller-profile/${id}/profile-picture`;
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    let promise = new Promise((resolve, reject) => {
+      this.http
+        .put<any>(url, formData)
+        .toPromise()
+        .then(
+          (res) => {
+            resolve(res);
+          },
+          (error) => {
+            reject(error);
+          }
+        );
+    });
+
+    return promise;
+  }
+  updateBuyerProfilePicture(id: string, file: File): Promise<any> {
+    const url = `http://localhost:5556/api/auth/buyer-profile/${id}/profile-picture`;
 
     const formData = new FormData();
     formData.append("file", file);
@@ -271,7 +358,7 @@ export class HttpClientService {
   
     let promise = new Promise((resolve, reject) => {
       this.http
-        .get<any[]>(`http://localhost:5556/api/users/sellers`, authenticationHeaders)
+        .get<any[]>(`http://localhost:5556/api/auth/users/sellers`, authenticationHeaders)
         .toPromise()
         .then(
           (res) => {
@@ -385,4 +472,38 @@ export class HttpClientService {
 
     return promise;
   }
+  updatePropertyAddInquiry(id: string, inquiry: any): Promise<any> {
+    if(!this.authStateService.hasCurrentUser()) {
+      throw new Error("No user");
+    }
+    
+    let authenticationHeaders = {
+      headers: new HttpHeaders()
+        .set('Authorization',  `Bearer ${(this.authStateService.getCurrentUser().token)}`)
+        .set('Content-Type', 'application/json')
+      }
+
+    let promise = new Promise((resolve, reject) => {
+      this.http
+        .put<any[]>(`http://localhost:5556/api/properties/${id}/inquiry`,
+        inquiry,
+        authenticationHeaders,
+        )
+        .toPromise()
+        .then(
+          (res) => {
+            console.log("deleteProperty success: ", res);
+            resolve(res);
+          },
+          (msg) => {
+            console.log("Caught in d  eleteProperty error: ", msg);
+            reject(msg);
+          }
+          );
+        });
+
+    return promise;
+  }
 }
+
+      

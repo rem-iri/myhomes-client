@@ -1,10 +1,27 @@
+<div class="search-container mt-40">
+  <input [(ngModel)]="searchQuery" type="text" placeholder="Search by location, region, or listing title" class="search-input">
+  <select [(ngModel)]="searchSaleType" class="search-select">
+    <option value="">All Sale Types</option>
+    <option value="For Sale">For Sale</option>
+    <option value="For Rent">For Rent</option>
+  </select>
+  <select [(ngModel)]="searchPropertyType" class="search-select">
+    <option value="">All Property Types</option>
+    <option value="Apartment">Apartment</option>
+    <option value="House">House</option>
+  </select>
+  <input [(ngModel)]="searchPriceMin" type="number" placeholder="Min Price" class="search-input">
+  <input [(ngModel)]="searchPriceMax" type="number" placeholder="Max Price" class="search-input">
+  <input [(ngModel)]="searchBath" type="number" placeholder="Bathrooms" class="search-input">
+  <input [(ngModel)]="searchBedroom" type="number" placeholder="Bedrooms" class="search-input">
+  <button (click)="searchProperties()" class="search-button">Search</button>
+</div>
 <app-properties-card>
   <app-properties-list>
     <div *ngFor="let property of properties" class="p-4 bg-white shadow rounded-lg">
-      <img [src]="property?.images[0].imageUrl" alt="Property Image" class="w-full h-48 object-cover rounded-t-lg">
+      <img *ngIf="property.images && property.images.length > 0" [src]="property.images[0].imageUrl" alt="Property Image" class="w-full h-48 object-cover rounded-t-lg">
       <h2 class="text-xl font-bold mt-4">{{ property.listingTitle }}</h2>
       <p class="text-gray-600">${{ property.price | currency:'PHP'  }}</p>
-      <p class="mt-4">{{ property.information }}</p>
       <button (click)="viewPropertyDetails(property.id)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
         Buy Now
       </button>

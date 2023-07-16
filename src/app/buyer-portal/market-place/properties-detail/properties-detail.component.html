@@ -1,9 +1,7 @@
+
 <div *ngIf="properties" class="container mt-40">
-    <div class="title-container">
-      <h2 class="titleproperty ml-10">We have the Best For You</h2>
-    </div>
     <div class="content-container">
-        <div class="image-container mt-10">
+        <div class="image-container ">
           <div class="image-wrapper mt-10">
             <div class="image-inner-wrapper">
               <img class="current-image mt-10" [src]="currentImage" alt="Current Image" />
@@ -17,8 +15,12 @@
             <button (click)="navigateImages('next')" class="arrow-button next-button">&gt;</button>
           </div>
         <app-properties-information></app-properties-information>
+        <div class="mapouter"><div class="gmap_canvas"><iframe width="770" height="510" id="gmap_canvas" [src]="getIframeSrc(properties)" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="">2yu</a><br><style>.mapouter{position:relative;text-align:right;height:510px;width:770px;}</style><a href="">html embed google map</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:510px;width:770px;}</style></div></div>
+        
+
       </div>
-      <div class="properties-details float-right mt-20">
+      <div>
+      <div class="properties-details float-right ">
         <div class="title text-center text-white">
           <h2 class="properties-title">{{ properties.listingTitle }}</h2>
         </div>
@@ -47,14 +49,33 @@
           <h4 class="description_title ml-4">Bedrooms</h4>
           <p class="properties-bedrooms ml-4 text-gray-800">{{ properties.bedroom }}</p>
         </div>
-        <!-- Display other property details as needed -->
-      </div>
-   
+     
         <div class="button-container text-center mt-4">
-          <button (click)="viewSellerInformation(properties.user_id)" class="rounded-full bg-blue-500 text-white py-4 px-14 hover:bg-orange">View Seller</button>
-
+          <button (click)="viewSellerInformation(properties.user_id)" class="rounded-full bg-blue-500 text-white py-4 px-8 hover:bg-orange">View Seller</button>
+          <button (click)="toggleInquiryForm()" class="rounded-full bg-blue-500 text-white py-4 px-8 hover:bg-orange">Inquire</button>
+        </div>
+        <div *ngIf="inquiryFormVisible" class="inquiry-form">
+          <h3 class="form-title">Send Inquiry</h3>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="text" id="phone" class="form-control" [(ngModel)]="inquiry.phoneNumber" placeholder="Enter your phone number">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-control" [(ngModel)]="inquiry.email" placeholder="Enter your email">
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" class="form-control" [(ngModel)]="inquiry.message" placeholder="Enter your message"></textarea>
+          </div>
+          <div class="form-group text-center">
+            <button (click)="submitInquiry()" class="btn btn-primary">Submit Inquiry</button>
+          </div>
+        </div>
         </div>
       </div>
-    </div>
+      </div>
+      </div>
+   
  
   

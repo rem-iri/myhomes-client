@@ -1,5 +1,7 @@
 
-
+.container{
+  height: auto;
+}
   .image-container {
     
     width: 1000px;
@@ -11,7 +13,7 @@
 .content-container
 {
   display: flex;
-  height: 1200px;
+  height: 1600px;
 }
     .title-container{
         background-color: white;
@@ -84,7 +86,8 @@
     background-color: white;
     margin-left: 15px;
     border-radius: 10px;
-    height: 350px;
+    height: auto;
+    width: 500px;
   }
   .properties-details2 {
    
@@ -92,8 +95,8 @@
     margin-left: 15px;
     border-radius: 10px;
     height: 350px;
-    margin-top: 400px;
-   
+    margin-top: 500px;
+    width: 500px;
   }
   .imageseller{
     padding-top: 30px;
@@ -124,4 +127,13 @@
   .properties-location {
     margin-top: 10px;
   }
-  
+  .button-container {
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: center;
+    gap: 20px; /* Adjust the spacing between buttons as needed */
+  }
+  .inquiry-form{
+    padding: 10px;
+  }
+  @import "~leaflet/dist/leaflet.css";

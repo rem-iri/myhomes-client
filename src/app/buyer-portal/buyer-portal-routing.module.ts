@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes,RouterLink } from '@angular/router';
-import { SellerComponent } from './seller/seller.component';
 import { PropertiesDetailComponent } from './market-place/properties-detail/properties-detail.component';
 import { PropertiesComponent } from './home/properties/properties.component';
-import { SellerModule } from './seller/seller.module';
+import { SellerModule } from './buyer-profile/buyer-profile.module';
 
 
 const routes: Routes = [
@@ -21,8 +20,8 @@ const routes: Routes = [
   //   component: PropertiesComponent
   // },
   {
-    path: 'seller',
-    loadChildren: () => import('./seller/seller.module').then(m => m.SellerModule)
+    path: 'buyerprofile',
+    loadChildren: () => import('./buyer-profile/buyer-profile.module').then(m => m.SellerModule)
   }
  
 ];
