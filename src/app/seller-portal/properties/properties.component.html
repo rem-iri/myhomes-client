@@ -25,8 +25,12 @@
                             <span class="text-gray-800">Price</span>
 						</th>
 		
-						<th class="w-2/12">
+						<th class="w-1/12">
 							<span class="text-gray-800">Created</span>
+						</th>
+
+						<th class="w-1/12">
+							<span class="text-gray-800">Inquiries</span>
 						</th>
 						
 						<th class="w-1/12">
@@ -72,6 +76,13 @@
 					</td>
 					<td>
                         <span>{{property?.dateCreated | date}}</span>
+					</td>
+					<td>
+						<div class="flex justify-center">
+							<mat-icon class="text-md mb-1 text-md">message</mat-icon>
+                        <span class="text-md">{{' ' + property?.inquiries?.length ?? 0}}</span>
+						</div>
+						
 					</td>
 					<td>
                         <div [ngClass]="{
