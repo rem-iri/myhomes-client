@@ -159,7 +159,7 @@ export class ProfileComponent implements OnInit {
         console.log('Profile picture updated successfully:', res);
         this.openSnackBar('Profile picture updated successfully!', 3000);
         // this.profileService.updateProfilePicture(res.profilePicture);
-        this.profileService.updateProfilePicture(`http://localhost:5556/api/auth/seller-profile/${this.userId}/profile-picture`);
+        this.profileService.updateProfilePicture(`http://localhost:5556/api/auth/seller-profile/${this.userId}/profile-picture?${Math.random()}`);
 
       })
       .catch((error: any) => {

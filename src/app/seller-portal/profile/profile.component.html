@@ -62,11 +62,9 @@
           <div class="character-count">
             <span id="character-count">{{ 300 - (profileForm.get('about')?.value?.length ?? 0) }}</span> characters remaining
           </div>
-          <mat-error *ngIf="profileForm.get('about')?.invalid && profileForm.get('about')?.touched"
-            class="error-message">About field is required.</mat-error>
         </mat-form-field>
         <div class="update-button">
-          <button mat-fab extended color="accent" (click)="updateProfile()" [disabled]="profileForm.invalid || !isEditing">
+          <button mat-fab extended color="accent" (click)="updateProfile()" [disabled]="profileForm.get('company')?.invalid || profileForm.get('firstName')?.invalid || profileForm.get('lastName')?.invalid || !isEditing">
             <mat-icon>edit</mat-icon>
             Update Profile
           </button>
