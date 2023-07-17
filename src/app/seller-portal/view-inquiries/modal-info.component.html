@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>{{data?.firstName + ' '}}{{data?.lastName}}</h1>
+<div mat-dialog-content>
+    <label class="block text-gray-700 text-sm font-semibold mb-2">Date</label>
+    {{data?.date | date:'mediumDate'}} {{data?.date | date:'shortTime'}}
+
+    <label class="block text-gray-700 text-sm font-semibold mb-2">Email</label>
+    {{data?.email}}
+
+    <label class="block text-gray-700 text-sm font-semibold mb-2">Phone Number</label>
+    {{data?.phoneNumber}}
+
+    <label class="block text-gray-700 text-sm font-semibold mb-2">Message</label>
+    {{data?.message}}
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</div>
+
+
+<!-- Copyright 2023 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at https://angular.io/license -->

@@ -5,6 +5,7 @@ import { PropertiesComponent } from './properties/properties.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CreatePropertyComponent } from './create-property/create-property.component';
 import { UpdatePropertyComponent } from './update-property/update-property.component';
+import { ViewInquiriesComponent } from './view-inquiries/view-inquiries.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'update-property/:id',
     component: UpdatePropertyComponent
+  },
+  {
+    path: 'view-inquiries/:id',
+    component: ViewInquiriesComponent
   }
 ];
 

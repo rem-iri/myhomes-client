@@ -1,4 +1,4 @@
-<div class="card-container">
+<!-- <div class="card-container">
   <mat-card class="custom-card">
     <div class="customed-icon">
       <mat-icon class="large-icon">home</mat-icon>
@@ -39,27 +39,49 @@
       <mat-card-title>Total Inquiries</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <p>{{ totalInquiriesContent }}</p>
+      <p></p>
     </mat-card-content>
     <mat-card-footer>
       <hr class="footer-line" />
       <div class="footer-content">Footer text</div>
     </mat-card-footer>
   </mat-card>
+</div> -->
 
-  <mat-card class="custom-card">
-    <div class="customed-icon">
-      <mat-icon class="large-icon">card_membership</mat-icon>
+<div class="container mx-auto px-20">
+  <div class="flex flex-row justify-between" style="cursor: auto;">
+     <div class="metric-card glass-card max-w-72 w-full m-2" style="cursor: auto;">
+      <a aria-label="Unsplash Downloads" target="_blank" rel="noopener noreferrer">
+        <div class="flex items-center text-gray-900 dark:text-gray-100" style="cursor: auto;">Open Listings
+          <svg class="h-4 w-4 ml-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="cursor: auto;">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10l9-9 9 9v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 22v-9a3 3 0 013-3h1a3 3 0 013 3v9"></path>
+          </svg>
+        </div>
+      </a>      
+      <p class="mt-2 text-3xl font-bold spacing-sm text-black dark:text-white" style="cursor: auto;">{{ openListingsContent }}</p>
     </div>
-    <mat-card-header>
-      <mat-card-title>Subscription</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <p>{{ subscriptionContent }}</p>
-    </mat-card-content>
-    <mat-card-footer>
-      <hr class="footer-line" />
-      <div class="footer-content">Footer text</div>
-    </mat-card-footer>
-  </mat-card>
+     <div class="metric-card glass-card max-w-72 w-full m-2" style="cursor: auto;">
+<a aria-label="Unsplash Views" target="_blank" rel="noopener noreferrer">
+  <div class="flex items-center text-gray-900 dark:text-gray-100" style="cursor: auto;">Closed Deals
+    <svg class="h-4 w-4 ml-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+    </svg>
+  </div>
+</a>
+
+      <p class="mt-2 text-3xl font-bold spacing-sm text-black dark:text-white" style="cursor: auto;">{{ closedDealsContent }}</p>
+    </div>
+     <div class="metric-card glass-card max-w-72 w-full m-2" style="cursor: auto;">
+        <a aria-label="YouTube Subscribers" target="_blank" rel="noopener noreferrer">
+          <div class="flex items-center text-gray-900 dark:text-gray-100" style="cursor: auto;">Total Inquiries
+            <svg class="h-4 w-4 ml-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+            </svg>
+          </div>
+        </a>
+      
+      <p class="mt-2 text-3xl font-bold spacing-sm text-black dark:text-white" style="cursor: auto;">{{ totalInquiriesContent }}</p>
+    </div>
+  </div>
 </div>

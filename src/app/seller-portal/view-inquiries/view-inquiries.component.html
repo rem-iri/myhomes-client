@@ -1,0 +1,43 @@
+
+  <div class="p-10">
+    <a [routerLink]="['../../properties']"  class="mb-10 text-gray-700 text-md hover:text-accent inline-flex items-center"><mat-icon class="h-4 w-4 leading-4 text-lg mr-2">keyboard_backspace</mat-icon>Back to My Properties</a>
+	<div class="flex align-center mb-3 ">
+        <mat-icon class="mt-1">message</mat-icon>
+        <h5 class="font-medium">Inquiries</h5>
+    </div>
+
+    <!-- <button mat-button (click)="openDialog()">Launch dialog</button> -->
+    
+    <h4 class="text-2xl font-light">{{property?.listingTitle + ' '}}{{"(" + property?.saleType + ")"}}</h4>
+    <h4 class="text-lg font-light mb-10">{{property?.city}}</h4>
+	<div class="table-inside">
+		<table class="order-table table-fixed ltMd:responsive">
+			<thead>
+				<tr class="border text-left">
+					<th>
+						<span class="text-gray-800">Name</span>
+					</th>
+					<th class="w-1/2">
+						<span class="text-gray-800">Message</span>
+					</th>
+					<th class="text-right">
+						<span class="text-gray-800">Date</span>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let inquiry of property?.inquiries" class="border">
+                    <td>
+                        {{inquiry?.firstName + ' '}}{{inquiry?.lastName }}
+					</td>
+                    <td class="w-1/2">
+                        <a *ngIf="inquiry?.message" (click)="openDialog(inquiry)" class="text-accent cursor-pointer">{{ ((inquiry?.message?.length ?? 0) > 75) ? (inquiry?.message | slice:0:75)+'...' : (inquiry?.message) }}</a>
+                    </td>
+					<td class="text-right">
+						<span>{{inquiry?.date | date:'mediumDate'}} {{inquiry?.date | date:'shortTime'}}</span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
