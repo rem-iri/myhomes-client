@@ -73,7 +73,6 @@ export class ChartsComponent implements AfterViewInit {
 
     this.fetchChartData();
   }
-
   async fetchChartData() {
     try {
       const currentUser = this.authStateService.getCurrentUser();
@@ -151,7 +150,6 @@ export class ChartsComponent implements AfterViewInit {
           }
         ]
       };
-
       this.salesChartData = {
         labels: Object.keys(this.salesByQuarter),
         datasets: [
@@ -212,7 +210,6 @@ export class ChartsComponent implements AfterViewInit {
           }
         ]
       };
-
       this.createChart();
       this.createSalesChart();
       this.createEarningsChart();
@@ -220,7 +217,7 @@ export class ChartsComponent implements AfterViewInit {
       console.log(error);
     }
   }
-
+  
   createChart() {
     const ctx = this.myChart.nativeElement.getContext('2d');
     this.chart = new Chart(ctx, {

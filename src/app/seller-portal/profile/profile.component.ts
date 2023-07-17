@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ProfileService } from 'src/app/service/profile.service';
 import { AuthStateService } from 'src/app/shared/auth-state.service';
 import { HttpClientService } from 'src/app/shared/http-client.service';
 
@@ -11,6 +12,7 @@ import { HttpClientService } from 'src/app/shared/http-client.service';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
+  @Output() profileUpdated = new EventEmitter<any>();
 
   company = new FormControl("", [Validators.required]);;
   email = new FormControl("", [Validators.required]);;
@@ -22,32 +24,24 @@ export class ProfileComponent implements OnInit {
   updatingProfile: boolean;
   isEditing: boolean = false;
 
-  profileForm: FormGroup = this.formBuilder.group(
-    {
-      firstName: this.firstName,
-      lastName: this.lastName,
-      email: this.email,
-      company: this.company,
-      about: this.about,
- 
-    },
-  
-  );
-
+  profileForm: FormGroup = this.formBuilder.group({
+    firstName: this.firstName,
+    lastName: this.lastName,
+    email: this.email,
+    company: this.company,
+    about: this.about,
+  });
 
   constructor(
     private authStateService: AuthStateService,
     private httpClientService: HttpClientService,
     private _snackBar: MatSnackBar,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private profileService: ProfileService
   ) {
-
     this.userId = this.authStateService.getCurrentUser()?.id;
     this.updatingProfile = false;
-
   }
-    
-  
 
   ngOnInit(): void {
     this.getSellerProfile();
@@ -70,18 +64,18 @@ export class ProfileComponent implements OnInit {
         about: string;
         profilePicture: string | ArrayBuffer | null;
       }) => {
-        this.company.setValue( res.company);
-        this.email.setValue( res.email);
-        this.firstName.setValue( res.firstName);
-        this.lastName.setValue( res.lastName);
-        this.about.setValue( res.about);
+        this.company.setValue(res.company);
+        this.email.setValue(res.email);
+        this.firstName.setValue(res.firstName);
+        this.lastName.setValue(res.lastName);
+        this.about.setValue(res.about);
         // this.profilePicture = res.profilePicture;
       })
       .catch((error: any) => {
         console.error('Error retrieving seller profile:', error);
       });
   }
-  
+
   getProfilePicture(): void {
     this.httpClientService
       .getProfilePicture(this.userId)
@@ -101,10 +95,10 @@ export class ProfileComponent implements OnInit {
 
   startEditing(): void {
     this.isEditing = !this.isEditing;
-    this.isEditing ? (this.firstName.enable()) : (this.firstName.disable());
-    this.isEditing ? (this.lastName.enable()) : (this.lastName.disable())
-    this.isEditing ? (this.company.enable()) : (this.company.disable())
-    this.isEditing ? (this.about.enable()) : (this.about.disable())
+    this.isEditing ? this.company.enable() : this.company.disable();
+    this.isEditing ? this.firstName.enable() : this.firstName.disable();
+    this.isEditing ? this.lastName.enable() : this.lastName.disable();
+    this.isEditing ? this.about.enable() : this.about.disable();
   }
 
   updateProfile(): void {
@@ -122,6 +116,8 @@ export class ProfileComponent implements OnInit {
         console.log('Profile updated successfully:', res);
         this.openSnackBar('Profile updated successfully!', 3000);
         this.isEditing = false;
+        this.profileUpdated.emit(updatedUser);
+        this.profileService.updateProfile(updatedUser); 
       })
       .catch((error: any) => {
         console.error('Error updating profile:', error);
@@ -148,7 +144,7 @@ export class ProfileComponent implements OnInit {
   }
 
   updateCharacterCount(): void {
-    let count: number = (this.about?.value?.length) ?? 0
+    let count: number = this.about?.value?.length ?? 0;
     const remainingCharacters = 300 - count;
     const characterCountElement = document.getElementById('character-count');
     if (characterCountElement) {
@@ -162,9 +158,13 @@ export class ProfileComponent implements OnInit {
       .then((res: any) => {
         console.log('Profile picture updated successfully:', res);
         this.openSnackBar('Profile picture updated successfully!', 3000);
+        // this.profileService.updateProfilePicture(res.profilePicture);
+        this.profileService.updateProfilePicture(`http://localhost:5556/api/auth/seller-profile/${this.userId}/profile-picture?${Math.random()}`);
+
       })
       .catch((error: any) => {
         console.error('Error updating profile picture:', error);
       });
   }
 }
+

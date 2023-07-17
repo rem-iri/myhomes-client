@@ -1,6 +1,6 @@
 <div class="profile-card">
   <div class="profile-header">
-    <h2 class="profile-title">My Profile</h2>
+    <h4 class="profile-title">My Profile</h4>
     <button
       class="edit-button"
       mat-icon-button
@@ -37,25 +37,22 @@
         <mat-form-field class="example-full-width">
           <mat-label>Company Name</mat-label>
           <input matInput formControlName="company">
-          <mat-error *ngIf="profileForm.get('company')?.invalid && profileForm.get('company')?.touched">
-            Company name is required.
-          </mat-error>
+          <mat-error *ngIf="profileForm.get('company')?.invalid && profileForm.get('company')?.touched"
+            class="error-message">Company name is required.</mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
           <mat-label>First Name</mat-label>
           <input matInput formControlName="firstName">
-          <mat-error *ngIf="profileForm.get('firstName')?.invalid && profileForm.get('firstName')?.touched">
-            First name is required.
-          </mat-error>
+          <mat-error *ngIf="profileForm.get('firstName')?.invalid && profileForm.get('firstName')?.touched"
+            class="error-message">First name is required.</mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
           <mat-label>Last Name</mat-label>
           <input matInput formControlName="lastName">
-          <mat-error *ngIf="profileForm.get('lastName')?.invalid && profileForm.get('lastName')?.touched">
-            Last name is required.
-          </mat-error>
+          <mat-error *ngIf="profileForm.get('lastName')?.invalid && profileForm.get('lastName')?.touched"
+            class="error-message">Last name is required.</mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
@@ -67,7 +64,7 @@
           </div>
         </mat-form-field>
         <div class="update-button">
-          <button mat-fab extended color="accent" (click)="updateProfile()"  [disabled]="!isEditing">
+          <button mat-fab extended color="accent" (click)="updateProfile()" [disabled]="profileForm.get('company')?.invalid || profileForm.get('firstName')?.invalid || profileForm.get('lastName')?.invalid || !isEditing">
             <mat-icon>edit</mat-icon>
             Update Profile
           </button>

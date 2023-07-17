@@ -1,23 +1,20 @@
-.profile-card {
-  width: 100%;
-  height: 100%;
-  margin: 100px auto;
-  background: linear-gradient(to bottom right, #f7f7f7, #e0e0e0);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-  border-radius: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
-}
 .profile-header {
   display: flex;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 60px;
   margin-left: 40px;
 }
 
+.mat-mdc-icon-button.mat-mdc-button-base {
+  --mdc-icon-button-state-layer-size: 48px;
+  width: var(--mdc-icon-button-state-layer-size);
+  height: var(--mdc-icon-button-state-layer-size);
+  padding: 12px;
+  margin-top: 50px;
+}
+
 .profile-title {
-  margin: 0;
+  margin-top: 60px;
 }
 
 .profile-form {
@@ -77,18 +74,27 @@
 }
 
 .example-full-width {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  width: 100%;
+  margin-bottom: 4px;
   margin-top: 20px;
-  margin-bottom: 16px;
-  font-size: 18px;
 }
 
-.example-full-width input {
-  max-width: 600px;
-  margin-bottom: 8px;
+.example-full-width input,
+.example-full-width textarea {
+  padding: 5px;
+  font-size: 14px;
+}
+
+.example-full-width ::ng-deep .mat-form-field-underline {
+  background-color: red !important;
+}
+
+.example-full-width ::ng-deep .mat-form-field-ripple {
+  background-color: red !important;
+}
+
+.error-message {
+  color: red;
 }
 
 .update-button {
