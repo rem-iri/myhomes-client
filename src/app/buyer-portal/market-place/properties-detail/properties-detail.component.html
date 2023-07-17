@@ -4,7 +4,7 @@
         <div class="image-container ">
           <div class="image-wrapper mt-10">
             <div class="image-inner-wrapper">
-              <img class="current-image mt-10" [src]="currentImage" alt="Current Image" />
+              <img class="current-image " [src]="currentImage" alt="Current Image" />
             </div>
           </div>
           <div class="other-images-container">
@@ -15,48 +15,62 @@
             <button (click)="navigateImages('next')" class="arrow-button next-button">&gt;</button>
           </div>
         <app-properties-information></app-properties-information>
-        <div class="mapouter"><div class="gmap_canvas"><iframe width="770" height="510" id="gmap_canvas" [src]="getIframeSrc(properties)" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="">2yu</a><br><style>.mapouter{position:relative;text-align:right;height:510px;width:770px;}</style><a href="">html embed google map</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:510px;width:770px;}</style></div></div>
+        <div class="map-container mt-10">
+          <h3>Look it on the map</h3>
+          <div class="google-map">
+            <div class="mapouter">
+              <div class="gmap_canvas">
+                <iframe width="100%" height="510" id="gmap_canvas" [src]="getIframeSrc(properties)" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                <a href="">2yu</a><br>
+                <style>.mapouter{position:relative;text-align:right;height:510px;width:100%;}</style>
+                <a href="">html embed google map</a>
+                <style>.gmap_canvas {overflow:hidden;background:none!important;height:510px;width:100%;}</style>
+              </div>
+            </div>
+          </div>
+        </div>
+        
         
 
       </div>
       <div>
-      <div class="properties-details float-right ">
+      <div class="properties-details ">
         <div class="title text-center text-white">
           <h2 class="properties-title">{{ properties.listingTitle }}</h2>
         </div>
-        <div class="description">
+        <div class="description ">
           <h4 class="description_title ml-4">Description</h4>
           <p class="properties-description ml-4 text-gray-800">{{ properties.description }}</p>
         </div>
-        <div class="description">
-          <h4 class="description_title ml-4">Price</h4>
-          <p class="properties-price ml-4 text-gray-800">
+        <div class="description flex justify-between">
+          <h4 class="description_title ml-4">Price: </h4>
+          <h5 class="properties-price ml-auto text-gray-800 text-right">
             <svg class="w-1 h-1 mr-2" viewBox="0 0 20 20" fill="currentColor">
               <use xlink:href="https://www.svgrepo.com/svg/530124/money"></use>
             </svg>
             {{ properties.price | currency:'PHP' }}
-          </p>
+          </h5>
         </div>
-        <div class="description">
-          <h4 class="description_title ml-4">Location</h4>
-          <p class="properties-location ml-4 text-gray-800">{{ properties.houseNumber }}</p>
+        <div class="description flex justify-between">
+          <h4 class="description_title ml-4 ">Location:</h4>
+          <h5 class="properties-location  text-gray-800 text-right ml-auto text-bold">{{ properties.houseNumber }}, {{ properties.street }} Street ,{{ properties.village}} Village ,{{ properties.city }} City,{{ properties.province }}</h5>
         </div>
-        <div class="description">
-          <h4 class="description_title ml-4">Bathrooms</h4>
-          <p class="properties-bathrooms ml-4 text-gray-800">{{ properties.bath }}</p>
+        <div class="description flex justify-between">
+          <h4 class="description_title ml-4">Bathrooms:</h4>
+          <h5 class="properties-bathrooms  text-gray-800 ml-auto text-right">{{ properties.bath }}</h5>
         </div>
-        <div class="description">
-          <h4 class="description_title ml-4">Bedrooms</h4>
-          <p class="properties-bedrooms ml-4 text-gray-800">{{ properties.bedroom }}</p>
+        <div class="description flex justify-between">
+          <h4 class="description_title ml-4 ">Bedrooms:</h4>
+          <h5 class="properties-bedrooms  text-gray-800 ml-auto text-right">{{ properties.bedroom }}</h5>
         </div>
      
         <div class="button-container text-center mt-4">
           <button (click)="viewSellerInformation(properties.user_id)" class="rounded-full bg-blue-500 text-white py-4 px-8 hover:bg-orange">View Seller</button>
-          <button (click)="toggleInquiryForm()" class="rounded-full bg-blue-500 text-white py-4 px-8 hover:bg-orange">Inquire</button>
+         
         </div>
-        <div *ngIf="inquiryFormVisible" class="inquiry-form">
-          <h3 class="form-title">Send Inquiry</h3>
-          <div class="form-group">
+        <div class="inquiry-form ">
+          <h3 class="form-title text-center mt-4 text-white">Send Inquiry</h3>
+          <div class="form-group mt-4">
             <label for="phone">Phone Number</label>
             <input type="text" id="phone" class="form-control" [(ngModel)]="inquiry.phoneNumber" placeholder="Enter your phone number">
           </div>
@@ -66,10 +80,10 @@
           </div>
           <div class="form-group">
             <label for="message">Message</label>
-            <textarea id="message" class="form-control" [(ngModel)]="inquiry.message" placeholder="Enter your message"></textarea>
+            <textarea id="message" class="form-control height-40" [(ngModel)]="inquiry.message" placeholder="Enter your message"></textarea>
           </div>
           <div class="form-group text-center">
-            <button (click)="submitInquiry()" class="btn btn-primary">Submit Inquiry</button>
+            <button (click)="submitInquiry()" class="btn btn-primary hover:bg-orange rounded-full">Submit Inquiry</button>
           </div>
         </div>
         </div>

@@ -17,21 +17,21 @@ export class PropertiesComponent implements OnInit {
   ngOnInit(): void {
     this.slides[0] = {
       id: 0,
-      src: './assets/images/about.jpg',
-      title: 'First slide',
-      subtitle: 'Nulla vitae elit libero, a pharetra augue mollis interdum.'
+      src: './assets/images/explore.jpg',
+      title: 'Explore',
+      subtitle: 'Exploring a house is like unlocking a world of possibilities and finding a place to call home.'
     };
     this.slides[1] = {
       id: 1,
-      src: './assets/images/house 2.jpg',
-      title: 'Second slide',
-      subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+      src: './assets/images/HOUSE.JPG',
+      title: 'Choose',
+      subtitle: 'Choosing a house is like finding the perfect puzzle piece that fits effortlessly into the mosaic of our dreams and desires'
     }
     this.slides[2] = {
       id: 2,
-      src: './assets/images/house3.jpeg',
-      title: 'Third slide',
-      subtitle: 'Praesent commodo cursus magna, vel scelerisque nisl consectetur.'
+      src: './assets/images/homes1.png',
+      title: 'My Homes',
+      subtitle: 'Finding my home is discovering a sanctuary where my heart finds solace and my dreams take flight..'
     }
   }
   }

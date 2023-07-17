@@ -1,11 +1,14 @@
-
+h5{
+  font-size: 15px;
+  float:right
+}
 .container{
   height: auto;
 }
   .image-container {
     
     width: 1000px;
-    height :600px;
+    height :700px;
     border-radius: 20px;
     background-color: white;
 }
@@ -13,7 +16,7 @@
 .content-container
 {
   display: flex;
-  height: 1600px;
+  height: 1540px;
 }
     .title-container{
         background-color: white;
@@ -25,7 +28,7 @@
         display: flex;
         justify-content: center;
         
-        height: 400px;
+        height: auto;
         border: 1px solid transparent;
       }
       
@@ -37,8 +40,8 @@
       
 
   .current-image {
-    width: 700px;
-    height: 400px;
+    width: 850px;
+    height: 450px;
 
 
   }
@@ -54,7 +57,13 @@
     margin-right: 10px;
     cursor: pointer;
   }
-  
+  .form-title{
+    background-color: #2359b1;
+  height: 40px;
+  }
+  .height-40 {
+    height: 145px;
+  }
 .title{
   background-color: #2359b1;
   height: 70px;
@@ -80,14 +89,24 @@
     margin-top: 10px;
     border-radius: 3px;
   }
-  
+  .map-container{
+    padding: 10px;
+    background-color: white;
+    border-radius: 15px;
+    width: 1450px;
+    padding-right: 10px;
+    margin-right: 15px;
+
+}
   .properties-details {
-    margin-top: 35px;
+    margin-top: 10px;
     background-color: white;
     margin-left: 15px;
     border-radius: 10px;
     height: auto;
-    width: 500px;
+    width: 430px;
+  
+    margin-right: 15px;
   }
   .properties-details2 {
    

@@ -39,9 +39,12 @@ $lieb-theme: mat.define-light-theme(
 
 @import 'assets/scss';
 
-html,
+html{
+  scroll-behavior: smooth;
+}
 body {
   height: 100%;
+  scroll-behavior: smooth;
 }
 body {
   margin: 0;

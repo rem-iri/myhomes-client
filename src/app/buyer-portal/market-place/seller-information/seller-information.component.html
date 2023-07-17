@@ -1,17 +1,41 @@
+
+
+
 <div class="mt-40">
-<h3>Seller Information</h3>
-<table *ngIf="seller">
-  <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Account Type</th>
-    <th>Company</th>
-  </tr>
-  <tr>
-    <td>{{ seller.firstName }} {{ seller.lastName }}</td>
-    <td>{{ seller.email }}</td>
-    <td>{{ seller.accountType }}</td>
- 
-  </tr>
-</table>
+  <div class="container mx-auto bg-white p-4">
+    <h3 class="text-center">Seller Information</h3>
+    <div class="flex justify-center items-center mb-4">
+      <img class="w-40 h-40 rounded-full" [src]="'http://localhost:5556/api/auth/seller-profile/' + seller.id + '/profile-picture'" alt="Profile Picture">
+      
+    </div>
+    <div class="fname text-bold text-lg">
+      <h4 class="text-center text-bold">{{ seller.firstName }} {{ seller.lastName }}</h4>
+      <p class="text-center text-bold">{{ seller.email }}</p>
+    </div>
+
+    <div class="form-group text-center p-8">
+      <label class="fname text-bold text-lg">First Name:</label>
+      <p class="text-center text-bold">{{ seller.firstName }}</p>
+    </div>
+
+    <div class="form-group  text-center">
+      <label  class="fname text-bold text-lg">Last Name</label>
+      <p class="text-center text-bold">{{ seller.lastName }}</p>
+    </div>
+
+    <div class="form-group text-center">
+      <label  class="fname text-bold text-lg">Email</label>
+      <p class="text-center text-bold">{{ seller.email }}</p>
+    </div>
+
+    <div class="form-group text-center">
+      <label  class="fname text-bold text-lg">Account Type</label>
+      <p class="text-center text-bold">{{ seller.accountType }}</p>
+    </div>
+
+    <div class="form-group  text-center">
+      <label class="fname text-bold text-lg">Company</label>
+      <p class="text-center text-bold">{{ seller.company }}</p>
+    </div>
+  </div>
 </div>

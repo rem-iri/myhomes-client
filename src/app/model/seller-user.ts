@@ -7,4 +7,5 @@ export class SellerUser {
     accountType: string;
     company: string;
     plan: string;
+    profilePicture?:string;
 }

@@ -25,6 +25,7 @@ module.exports = {
       primary: '#58B57D',
       accent: '#EE5E36',
       warn: '#FDE300',
+      t_secondary:'#F29F05',
       black: colors.black,
       white: colors.white,
       gray: colors.coolGray,

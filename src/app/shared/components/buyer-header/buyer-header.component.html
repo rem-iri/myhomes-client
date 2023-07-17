@@ -1,17 +1,17 @@
-<header class="ll_header" [class.top-fixed]="topFixed" [ngClass]="{ 'bg-orange-50 shadow': topFixed && isScrolled }">
+<header class="ll_header shadow-lg" [class.top-fixed]="topFixed" [ngClass]="{ 'bg-white-50 shadow': topFixed && isScrolled }">
   <div class="container">
     <div class="flex items-center">
       <div class="flex items-center">
         <a class="logo" [routerLink]="['']"><img src="assets/images/logo.png" alt="Logo" /></a>
         <ul class="flex item-center ml-5" *ngIf="!isLessThenLargeDevice && menuList && menuList.length">
           <li>
-            <a mat-button [routerLink]="['buyer/home']" routerLinkActive="bg-gray-100" class="text-lg font-bold" style="color: white;">Home</a>
+            <a mat-button [routerLink]="['buyer/home']" routerLinkActive="bg-orange-100 hover:bg-blue-500" class="text-lg font-bold hover:bg-blue-700 hover:text-white" style="color: orange;">Home</a>
           </li>
           <li>
-            <a mat-button [routerLink]="['buyer/marketplace']"  routerLinkActive="bg-gray-100" class="text-lg font-bold" style="color: white;">Marketplace</a>
+            <a mat-button [routerLink]="['buyer/marketplace']"  routerLinkActive="bg-gray-100" class="text-lg font-bold hover:bg-blue-700 hover:text-white" style="color: orange;">Marketplace</a>
           </li>
           <li>
-            <a mat-button [routerLink]="['buyer/buyerprofile']"  routerLinkActive="bg-gray-100" class="text-lg font-bold" style="color: white;">Profile</a>
+            <a mat-button [routerLink]="['buyer/buyerprofile']"  routerLinkActive="bg-gray-100" class="text-lg font-bold hover:bg-blue-700 hover:text-white" style="color: orange;">Profile</a>
           </li>
         </ul>
       </div>
@@ -24,7 +24,7 @@
         <mat-icon>menu</mat-icon>
       </button>
       <div class="hidden items-center md:flex ml-auto">
-        <a (click)="logout()" mat-raised-button class="text-sm font-bold py-2 px-5 ml-2 bg-white text-black">Logout</a>
+        <a (click)="logout()"  mat-raised-button color="accent" class=" buttonlogout hover:bg-orange-700 text-sm font-bold py-2 px-5 ml-2 text-white">Logout</a>
       </div>
     </div>
   </div>

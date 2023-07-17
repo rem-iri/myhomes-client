@@ -5,39 +5,37 @@
       <thead>
         <tr>
           <th class="px-4 py-2 border border-gray-400  text-white">Features</th>
-          <th class="px-4 py-2 border border-gray-400  text-white">Description</th>
+          <th class="px-4 py-2 border border-gray-400  text-white text-center">Description</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td class="border px-4 py-2 font-bold border-gray-400">Sale Type</td>
-          <td class="border px-4 py-2 text-center border-gray-400">Rent</td>
+          <td class="border px-4 py-2 text-center border-gray-400">{{ properties?.saleType }}</td>
         </tr>
         <tr>
           <td class="border px-4 py-2 font-bold border-gray-400">Bedroom</td>
-          <td class="border px-4 py-2 text-center border-gray-400">1 king size</td>
+          <td class="border px-4 py-2 text-center border-gray-400">{{ properties?.bedroom }}</td>
         </tr>
         <tr>
           <td class="border px-4 py-2 font-bold border-gray-400">Bathroom</td>
-          <td class="border px-4 py-2 text-center border-gray-400">1 in the kitchen, 1 in bedroom</td>
+          <td class="border px-4 py-2 text-center border-gray-400">{{ properties?.bath }}</td>
         </tr>
         <tr>
           <td class="border px-4 py-2 font-bold border-gray-400">Property Type</td>
-          <td class="border px-4 py-2 text-center border-gray-400">Apartment</td>
+          <td class="border px-4 py-2 text-center border-gray-400">{{ properties?.propertyType }}</td>
         </tr>
         <tr>
           <td class="border px-4 py-2  font-bold border-gray-400">Area</td>
-          <td class="border px-4 py-2 text-center border-gray-400">50 sqm</td>
+          <td class="border px-4 py-2 text-center border-gray-400">{{ properties?.area}}</td>
         </tr>
         <tr>
           <td class="border px-4 py-2 font-bold border-gray-400">Furnishing</td>
-          <td class="border px-4 py-2 text-center border-gray-400">Fully Furnished</td>
+          <td class="border px-4 py-2 text-center border-gray-400">{{ properties?.furnishing}}</td>
         </tr>
       </tbody>
     </table>
  
   </div>
-  <div class="map-container mt-10">
-    <h3>Look it on the map</h3>
-</div>
+ 
   </div>

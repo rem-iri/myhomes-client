@@ -5,13 +5,13 @@
     <c-carousel-item *ngFor="let slide of slides">
       <img
         alt="{{slide.title}}"
-        class="d-block w-100"
+        class="d-block w-100 fixed-image-height"
         loading="lazy"
         src="{{slide.src}}"
       />
-      <c-carousel-caption class="d-none d-md-block">
-        <h3>{{slide.title}}</h3>
-        <p>{{slide.subtitle}}</p>
+      <c-carousel-caption class="d-none d-md-block color-black">
+        <h3 class="slide-title bg-gray-700 bg-opacity-50 w-auto rounded-lg inline-block p-2">{{slide.title}}</h3>
+        <p class="slide-subtitle bg-gray-700 bg-opacity-50 w-auto rounded-lg inline-block p-2">{{slide.subtitle}}</p>
       </c-carousel-caption>
     </c-carousel-item>
   </c-carousel-inner>
@@ -19,7 +19,7 @@
   <c-carousel-control [routerLink] caption="Next" direction="next"></c-carousel-control>
 </c-carousel>
 
-</div><div class="textforproperties text-center  "> <h1 class="bg-orange ">Unlock Your Dream <br>Property Today<br><br></h1>
-  <h3>Choose from a Diverse Collection of Exquisite Homes</h3></div>
+</div><div class="textforproperties text-right  "> <h1 >Unlock Your Dream <br>Property Today<br><br></h1>
+  <p>Finding your dream property has never been easier. Our advanced recommendation engine takes into account your preferences, lifestyle, and aspirations to deliver highly personalized suggestions. From the bustling city center to serene suburban neighborhoods, we'll help you navigate the vast landscape of real estate options and unearth the hidden gems that resonate with your desires.</p></div>
 
 </div>

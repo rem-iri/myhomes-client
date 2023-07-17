@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from 'src/app/model/user';
+import { SellerUser } from 'src/app/model/seller-user';
 import { HttpClientService } from 'src/app/shared/http-client.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { HttpClientService } from 'src/app/shared/http-client.service';
 })
 export class SellerInformationComponent implements OnInit {
 
-  seller: User;
+  seller: SellerUser;
 
   constructor(
     private route: ActivatedRoute,

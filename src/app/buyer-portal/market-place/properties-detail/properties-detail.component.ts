@@ -5,6 +5,7 @@ import { HttpClientService } from 'src/app/shared/http-client.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AuthStateService } from 'src/app/shared/auth-state.service';
 
+
 interface Property {
   id: string;
   user_id: string;
@@ -102,7 +103,11 @@ export class PropertiesDetailComponent implements OnInit {
     this.inquiry.buyer_id =  this.authStateService.getCurrentUser()?.id,
     console.log('Inquiry:', this.inquiry);
     this.httpClient.updatePropertyAddInquiry(this.properties.id, this.inquiry);
-    
+    window.alert('Inquiry sent successfully!');
+    this.inquiry.phoneNumber = '';
+  this.inquiry.email = '';
+  this.inquiry.message = '';
+
     this.inquiryFormVisible = false;
   }
   getIframeSrc(property: any) {
