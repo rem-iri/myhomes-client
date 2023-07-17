@@ -25,7 +25,7 @@ export class AgentSummaryComponent implements OnInit {
   async getProperties() {
     try {
       const userId = this.authStateService.getCurrentUser()?.id;
-      // this.properties = await this.httpClientService.getAllProperties(userId);
+      this.properties = await this.httpClientService.getAllProperties(userId);
       const openListings = this.properties.filter((property: any) => !property.sold);
       this.openListingsContent = openListings.length.toString();
 

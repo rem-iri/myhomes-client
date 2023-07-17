@@ -3,34 +3,29 @@
     <mat-card class="chart-card">
       <h2 class="chart-title">Inquiries Per Cities</h2>
       <div class="chart-wrapper">
-        <canvas #myChart></canvas>
+        <canvas #myChart class="chart-canvas"></canvas>
       </div>
     </mat-card>
     <mat-card class="chart-card">
-      <h2 class="chart-title">Property Sales </h2>
+      <h2 class="chart-title">Property Sales</h2>
       <div class="chart-wrapper">
-        <canvas width="500px" #salesChart></canvas>
+        <canvas #salesChart class="chart-canvas"></canvas>
       </div>
     </mat-card>
     <mat-card class="chart-card">
       <h2 class="chart-title">Yearly Sale Earnings</h2>
       <div class="chart-wrapper">
-        <canvas #earningsChart></canvas>
+        <canvas #earningsChart class="chart-canvas"></canvas>
       </div>
     </mat-card>
     <mat-card class="chart-card">
       <h2 class="chart-title">Rental Earnings</h2>
       <div class="chart-toggle">
-        <span class="toggle-label">Monthly</span>
-        <mat-slide-toggle (change)="toggleRentEarningsPeriod()">
-          Yearly
-        </mat-slide-toggle>
+        <h5 class="chart-title">Total Earnings: {{getRentalTotal() | currency:'PHP'}}</h5>
       </div>
       <div class="chart-wrapper">
-        <canvas #rentChart></canvas>
+        <canvas #rentChart class="chart-canvas"></canvas>
       </div>
     </mat-card>
-    
-    
   </div>
 </div>
