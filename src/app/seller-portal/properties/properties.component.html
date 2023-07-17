@@ -15,38 +15,38 @@
             <table class="order-table table-fixed ltMd:responsive">
                 <thead>
                     <tr class="border text-left">
-                        <th class="w-96">
+                        <th class="w-3/12">
                             <span class="text-gray-800"></span>
                         </th>
-                        <th>
-                            <span class="text-gray-800">Title</span>
+                        <th class="w-3/12">
+                            <span class="text-gray-800 font-medium">Title</span>
                         </th>
-                        <th>
+                        <th class="w-2/12">
                             <span class="text-gray-800">Price</span>
-					</th>
-	
-					<th>
-                        <span class="text-gray-800">Created</span>
-					</th>
-                    
-					<th>
-                        <span class="text-gray-800">Status</span>
-					</th>
-                    
-					<th class="text-right">Action</th>
-				</tr>
+						</th>
+		
+						<th class="w-2/12">
+							<span class="text-gray-800">Created</span>
+						</th>
+						
+						<th class="w-1/12">
+							<span class="text-gray-800">Status</span>
+						</th>
+						
+						<th class="text-right w-1/12"> </th>
+					</tr>
 			</thead>
 			<tbody>
 				<tr *ngFor="let property of properties" class="border">
-                    <td class="w-96 p-10">
+                    <td class="p-5">
                         
                         <p class="" *ngIf="property?.images?.length === 0">No image to show</p>
-						<div class="rounded-md h-64 w-80 overflow-hidden" *ngIf="property?.images?.length >= 1">
+						<div class="rounded-md h-64 overflow-hidden" *ngIf="property?.images?.length >= 1">
 						<c-carousel [interval]="0">
 							<c-carousel-indicators></c-carousel-indicators>
 							<c-carousel-inner>
 							  <c-carousel-item *ngFor="let image of property?.images">
-								<div class="rounded-md h-64 w-80 overflow-hidden">
+								<div class="rounded-md h-64 overflow-hidden">
 									<img
 									class="h-full w-full object-cover"
 									loading="lazy"
@@ -55,8 +55,6 @@
 								</div>
 								
 								<c-carousel-caption class="d-none d-md-block">
-								  <!-- <h3>{{slide.title}}</h3>
-								  <p>{{slide.subtitle}}</p> -->
 								</c-carousel-caption>
 							  </c-carousel-item>
 							</c-carousel-inner>
@@ -64,18 +62,13 @@
 							<c-carousel-control *ngIf="property?.images?.length >= 2" [routerLink] caption=" " direction="next"></c-carousel-control>
 						  </c-carousel>
 						</div>
-                        <!-- <div class="rounded-md h-64 w-80 overflow-hidden" *ngIf="property?.images?.[0]?.imageUrl">
-                            <img class="h-full w-full object-cover" [src]="property?.images?.[0]?.imageUrl" alt="img">
-                        </div> -->
-
-						<!-- <a class="text-primary" href="/">{{property?.id}}</a> -->
 					</td>
-					<td>
-                        {{property?.listingTitle | titlecase }}
+					<td class="font-medium">
+                        {{property?.listingTitle }}
 						
 					</td>
 					<td>
-                        <span>{{property?.price | currency:'PHP'}}</span>
+                        <span class="font-medium">{{property?.price | currency:'PHP'}} <span class="font-light">{{' (' + property?.saleType + ')'}}</span></span>
 					</td>
 					<td>
                         <span>{{property?.dateCreated | date}}</span>
@@ -83,7 +76,7 @@
 					<td>
                         <div [ngClass]="{
                             'bg-yellow-500 text-yellow-900': property?.sold === false,
-							'bg-green-400 text-yellow-800': property?.sold === true
+							'bg-primary text-primary': property?.sold === true
                         }" 
 							class="text-[12px] bg-opacity-20 rounded-full px-3 inline-block font-bold py-[3px]"
 						>
@@ -95,7 +88,7 @@
                             <mat-icon class="text-center">more_vert</mat-icon>
 						</button>
 						<mat-menu #menu="matMenu" xposition="before">
-                            <button mat-menu-item>
+                            <button mat-menu-item [routerLink]="['../view-inquiries/' + property?.id]">
                                 <mat-icon>message</mat-icon>
 								<span>View Inquiries</span>
 							</button>

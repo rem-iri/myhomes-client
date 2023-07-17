@@ -14,9 +14,12 @@ import { MatMenuModule } from '@angular/material/menu';
 import { CreatePropertyComponent } from './create-property/create-property.component';
 import { UploadImagesComponent } from './upload-images/upload-images.component';
 import { UpdatePropertyComponent } from './update-property/update-property.component';
+import { ViewInquiriesComponent } from './view-inquiries/view-inquiries.component';
+
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [PropertiesComponent, ProfileComponent, CreatePropertyComponent, UploadImagesComponent, UpdatePropertyComponent],
+  declarations: [PropertiesComponent, ProfileComponent, CreatePropertyComponent, UploadImagesComponent, UpdatePropertyComponent, ViewInquiriesComponent],
   imports: [
     CommonModule,
     SharedModule,
@@ -25,8 +28,9 @@ import { UpdatePropertyComponent } from './update-property/update-property.compo
     MatMenuModule,
     FormsModule,
     ReactiveFormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule,
   ],
-  exports: [PropertiesComponent, ProfileComponent, CreatePropertyComponent, UploadImagesComponent, UpdatePropertyComponent]
+  exports: [PropertiesComponent, ProfileComponent, CreatePropertyComponent, UploadImagesComponent, UpdatePropertyComponent, ViewInquiriesComponent]
 })
 export class SellerPortalModule {}
