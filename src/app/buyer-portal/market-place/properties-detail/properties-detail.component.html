@@ -1,10 +1,10 @@
 
-<div *ngIf="properties" class="container mt-40">
+<div *ngIf="properties" class="container mt-40 ">
     <div class="content-container">
         <div class="image-container ">
           <div class="image-wrapper mt-10">
             <div class="image-inner-wrapper">
-              <img class="current-image " [src]="currentImage" alt="Current Image" />
+              <img class="current-image object-contain" [src]="currentImage" alt="Current Image" />
             </div>
           </div>
           <div class="other-images-container">
@@ -15,7 +15,7 @@
             <button (click)="navigateImages('next')" class="arrow-button next-button">&gt;</button>
           </div>
         <app-properties-information></app-properties-information>
-        <div class="map-container mt-10">
+        <div class="map-container mt-10" style="width: 1000px">
           <h3>Look it on the map</h3>
           <div class="google-map">
             <div class="mapouter">
