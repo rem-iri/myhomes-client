@@ -20,7 +20,7 @@
           <div class="google-map">
             <div class="mapouter">
               <div class="gmap_canvas">
-                <iframe width="100%" height="510" id="gmap_canvas" [src]="getIframeSrc(properties)" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                <iframe width="100%" height="510" id="gmap_canvas" [src]="getSourceURL()" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
                 <a href="">2yu</a><br>
                 <style>.mapouter{position:relative;text-align:right;height:510px;width:100%;}</style>
                 <a href="">html embed google map</a>
@@ -34,15 +34,15 @@
 
       </div>
       <div>
-      <div class="properties-details ">
+      <div class="properties-details p-3">
         <div class="title text-center text-white">
           <h2 class="properties-title">{{ properties.listingTitle }}</h2>
         </div>
-        <div class="description ">
+        <div class="description p-3">
           <h4 class="description_title ml-4">Description</h4>
           <p class="properties-description ml-4 text-gray-800">{{ properties.description }}</p>
         </div>
-        <div class="description flex justify-between">
+        <div class="description flex justify-between p-3">
           <h4 class="description_title ml-4">Price: </h4>
           <h5 class="properties-price ml-auto text-gray-800 text-right">
             <svg class="w-1 h-1 mr-2" viewBox="0 0 20 20" fill="currentColor">
@@ -51,15 +51,16 @@
             {{ properties.price | currency:'PHP' }}
           </h5>
         </div>
-        <div class="description flex justify-between">
+        <div class="description flex justify-between p-3">
           <h4 class="description_title ml-4 ">Location:</h4>
-          <h5 class="properties-location  text-gray-800 text-right ml-auto text-bold">{{ properties.houseNumber }}, {{ properties.street }} Street ,{{ properties.village}} Village ,{{ properties.city }} City,{{ properties.province }}</h5>
+          <!-- <h5 class="properties-location  text-gray-800 text-right ml-auto text-bold">{{ properties.houseNumber }}, {{ properties.street }} Street ,{{ properties.village}} Village ,{{ properties.city }} City,{{ properties.province }}</h5> -->
+          <h5 class="properties-location  text-gray-800 text-right ml-auto text-bold p-3">{{ properties.houseNumber + ' '  + properties.street + ' ' + properties.village + ' ' + properties.city + ' ' + properties.province | titlecase}}</h5>
         </div>
-        <div class="description flex justify-between">
+        <div class="description flex justify-between p-3">
           <h4 class="description_title ml-4">Bathrooms:</h4>
           <h5 class="properties-bathrooms  text-gray-800 ml-auto text-right">{{ properties.bath }}</h5>
         </div>
-        <div class="description flex justify-between">
+        <div class="description flex justify-between p-3">
           <h4 class="description_title ml-4 ">Bedrooms:</h4>
           <h5 class="properties-bedrooms  text-gray-800 ml-auto text-right">{{ properties.bedroom }}</h5>
         </div>

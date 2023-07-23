@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/model/user';
 import { HttpClientService } from 'src/app/shared/http-client.service';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { AuthStateService } from 'src/app/shared/auth-state.service';
 
 
@@ -50,6 +50,8 @@ export class PropertiesDetailComponent implements OnInit {
     email: '',
     message: ''
   };
+  public sanitizedSource: SafeResourceUrl;
+  private baseUrl = 'whateveryouwant.com';
 
   constructor(
     private route: ActivatedRoute,
@@ -58,6 +60,10 @@ export class PropertiesDetailComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private authStateService: AuthStateService
   ) {}
+
+  getSourceURL(): SafeResourceUrl {
+    return this.sanitizedSource;
+  }
 
  
   ngOnInit() {
@@ -70,11 +76,15 @@ export class PropertiesDetailComponent implements OnInit {
           if (this.properties.images.length > 0) {
             this.setCurrentImage(0); // Set the initial current image to index 0
           }
+
+          this.sanitizedSource = this.sanitizer.bypassSecurityTrustResourceUrl(`https://maps.google.com/maps?q=${properties?.houseNumber} ${properties?.street} ${properties?.village} ${properties?.city} ${properties?.region} ${properties?.province} Philippines&t=&z=16&ie=UTF8&iwloc=&output=embed`)
         })
         .catch((error) => {
           console.error('Failed to fetch property details', error);
         });
     }
+
+    this.sanitizedSource = this.getIframeSrc
   }
 
   navigateImages(direction: string) {

@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit {
   email = new FormControl("", [Validators.required]);;
   firstName = new FormControl("", [Validators.required]);;
   lastName = new FormControl("", [Validators.required]);;
-  about = new FormControl("", [Validators.required]);;
+  about = new FormControl("");;
   profilePicture: string | ArrayBuffer | null;
   userId: string;
   updatingProfile: boolean;

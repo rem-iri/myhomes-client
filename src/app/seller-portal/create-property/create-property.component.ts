@@ -30,7 +30,7 @@ export class CreatePropertyComponent implements OnInit{
   
   user_id = new FormControl("");
   listingTitle = new FormControl("", [Validators.required]);
-  propertyType = new FormControl("Condominium", [Validators.required]);
+  propertyType = new FormControl("", [Validators.required]);
   description = new FormControl("", [Validators.required]);
   furnishing = new FormControl("", [Validators.required]);
   saleType = new FormControl("", [Validators.required]);

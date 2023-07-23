@@ -66,11 +66,15 @@ export class ChartsComponent implements AfterViewInit {
           ticks: {
             autoSkip: true, 
             maxRotation: 0, 
-            padding: 10
+            padding: 10,
+            display: false
           }
         },
         y: {
           grid: {
+            display: false
+          },
+          ticks: {
             display: false
           }
         }
@@ -137,7 +141,10 @@ export class ChartsComponent implements AfterViewInit {
       const inquiries = Object.values(this.inquiriesByCity);
       
       const yearsforProperty = Object.keys(this.propertiesSoldByYear);
-      const propertyCounts = yearsforProperty.map((year: string) => this.propertiesSoldByYear[year]);
+      const propertyCounts = yearsforProperty.map((year: string) => {
+        console.log("COUNT", this.propertiesSoldByYear[year])
+        return this.propertiesSoldByYear[year]
+      });
   
       const yearsForEarnings = Object.keys(this.earningsChartData);
       const earningsData = yearsForEarnings.map((year: string) => this.earningsChartData[year]);
@@ -292,7 +299,41 @@ export class ChartsComponent implements AfterViewInit {
     this.earningsChartInstance = new Chart(earningsCtx, {
       type: 'bar',
       data: this.earningsChartData,
-      options: this.chartOptions
+      options: {
+        ...this.chartOptions,
+        scales: {
+          ...this.chartOptions.scales,
+          x: {
+            grid: {
+              display: false
+            },
+            ticks: {
+              autoSkip: true, 
+              maxRotation: 0, 
+              padding: 10,
+              display: false
+            }
+          },
+          y: {
+            grid: {
+              display: false
+            },
+            ticks: {
+                display: true,
+                startAtZero: true,
+                callback: function(value: any, index: any, values: any) {
+                    if(parseInt(value) >= 1000){
+                        return '₱' + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                    } else {
+                        return '₱' + value;
+                    }
+                }  
+              // display: false
+            }
+          }
+        }
+        
+      }
     });
   }
 
@@ -301,7 +342,7 @@ export class ChartsComponent implements AfterViewInit {
     this.rentChartInstance = new Chart(rentCtx, {
       type: 'doughnut',
       data: this.rentChartData,
-      options: this.chartOptions
+      options: {...this.chartOptions}
     });
   }
 

@@ -43,6 +43,7 @@ export class MarketPlaceComponent implements OnInit {
   searchPriceMax: number | null = null;
   searchBath: number | null = null;
   searchBedroom: number | null = null;
+  copyProperties: Property[] = [];
 
 
   constructor(
@@ -54,6 +55,8 @@ export class MarketPlaceComponent implements OnInit {
     
     try {
         this.properties = await this.httpClient.getAllProperties();
+
+        this.copyProperties = this.properties;
     } catch(error) {
       console.log("On Properties Component: error ", error);
     } 
@@ -114,6 +117,8 @@ export class MarketPlaceComponent implements OnInit {
   searchProperties() {
     this.currentPage = 1; // Reset current page when searching
 
+    this.properties = this.copyProperties;
+
   const filteredProperties = this.properties.filter((property) => {
     let isMatch = true;
 
@@ -142,11 +147,11 @@ export class MarketPlaceComponent implements OnInit {
     }
 
     if (this.searchBath !== null && property.bath !== null) {
-      isMatch = isMatch || property.bath === this.searchBath;
+      isMatch = isMatch && property.bath === this.searchBath;
     }
 
     if (this.searchBedroom !== null && property.bedroom !== null) {
-      isMatch = isMatch || property.bedroom === this.searchBedroom;
+      isMatch = isMatch && property.bedroom === this.searchBedroom;
     }
 
     return isMatch;
